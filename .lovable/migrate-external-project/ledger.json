@@ -1,1 +1,67 @@
-{"source":"code-archive","capabilities":[{"capability":"screens and code","source":"incomplete archive plus brief","outcome":"rebuild","status":"in_progress","next_action":"Recreate six workspace views"},{"capability":"schema and tenant authorization","source":"PostgreSQL and Better Auth","outcome":"migrate","status":"pending","next_action":"Create Cloud schema and scoped access"},{"capability":"records","source":"PostgreSQL","outcome":"migrate","status":"pending","next_action":"Request per-table CSV or JSON exports"},{"capability":"auth identities","source":"Better Auth","outcome":"migrate","status":"pending","next_action":"Request user export; verified first-login password setup"},{"capability":"private photo bytes","source":"optional S3 or local uploads","outcome":"preserve","status":"pending","next_action":"Obtain existing photo export or provider configuration"},{"capability":"public endpoints and external callers","source":"Hono /api endpoints","outcome":"preserve or cut over","status":"pending","next_action":"Document replaced auth and API cutover"},{"capability":"offline and QR tags","source":"brief and QR spec","outcome":"rebuild","status":"in_progress","next_action":"Guarded PWA and compatible QR formats"},{"capability":"verification","source":"rebuilt workspace","outcome":"verify","status":"pending","next_action":"Test browser flow, permissions, and conversions"}]}
+{
+  "source": "code-archive",
+  "capabilities": [
+    {
+      "capability": "screens and code",
+      "source": "incomplete archive plus brief",
+      "outcome": "rebuild",
+      "status": "verified",
+      "next_action": "Six routes checked in desktop and mobile preview"
+    },
+    {
+      "capability": "schema and tenant authorization",
+      "source": "PostgreSQL and Better Auth",
+      "outcome": "migrate",
+      "status": "verified",
+      "next_action": "Staff and customer restrictions checked with three isolated temporary users"
+    },
+    {
+      "capability": "records",
+      "source": "PostgreSQL",
+      "outcome": "migrate",
+      "status": "pending",
+      "next_action": "Request per-table CSV or JSON exports"
+    },
+    {
+      "capability": "auth identities",
+      "source": "Better Auth",
+      "outcome": "migrate",
+      "status": "pending",
+      "next_action": "Request user export; verified first-login password setup"
+    },
+    {
+      "capability": "private photo bytes",
+      "source": "optional S3 or local uploads",
+      "outcome": "preserve",
+      "status": "pending",
+      "next_action": "Obtain existing photo export or provider configuration"
+    },
+    {
+      "capability": "public endpoints and external callers",
+      "source": "Hono /api endpoints",
+      "outcome": "preserve or cut over",
+      "status": "pending",
+      "next_action": "App now uses Cloud reads and writes; original Hono /api contracts not migrated. Identify external callers before cutover"
+    },
+    {
+      "capability": "offline and QR tags",
+      "source": "brief and QR spec",
+      "outcome": "rebuild",
+      "status": "implemented",
+      "next_action": "Publish to verify offline opening; camera/scanner/printer hardware remains unverified"
+    },
+    {
+      "capability": "verification",
+      "source": "rebuilt workspace",
+      "outcome": "verify",
+      "status": "partially_verified",
+      "next_action": "Eight tests pass; signed-in create/read/update and tenant isolation pass; imported-user and published offline checks pending"
+    }
+  ],
+  "limitations": [
+    "Existing records and user identities were not supplied and are not imported.",
+    "Offline support caches the app and self-contained QR cards, not private club data or offline writes.",
+    "Original optional S3 photo provider cannot be verified without configuration; new uploads use private Cloud storage.",
+    "Thermal and sheet dialogs implemented; physical scale/fit requires printer testing."
+  ]
+}
