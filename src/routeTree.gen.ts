@@ -16,6 +16,11 @@ import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as ScanRouteImport } from './routes/scan'
 import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as ApiClubsRouteImport } from './routes/api.clubs'
+import { Route as ApiJobsRouteImport } from './routes/api.jobs'
+import { Route as ApiPhotoRouteImport } from './routes/api.photo'
+import { Route as ApiJobsIdRouteImport } from './routes/api.jobs.$id'
+import { Route as ApiPhotoUserIdRouteImport } from './routes/api.photo.$userId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -52,6 +57,31 @@ const SettingsRoute = SettingsRouteImport.update({
   path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiClubsRoute = ApiClubsRouteImport.update({
+  id: '/api/clubs',
+  path: '/api/clubs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiJobsRoute = ApiJobsRouteImport.update({
+  id: '/api/jobs',
+  path: '/api/jobs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPhotoRoute = ApiPhotoRouteImport.update({
+  id: '/api/photo',
+  path: '/api/photo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiJobsIdRoute = ApiJobsIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => ApiJobsRoute,
+} as any)
+const ApiPhotoUserIdRoute = ApiPhotoUserIdRouteImport.update({
+  id: '/$userId',
+  path: '/$userId',
+  getParentRoute: () => ApiPhotoRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -61,6 +91,11 @@ export interface FileRoutesByFullPath {
   '/reset-password': typeof ResetPasswordRoute
   '/scan': typeof ScanRoute
   '/settings': typeof SettingsRoute
+  '/api/clubs': typeof ApiClubsRoute
+  '/api/jobs': typeof ApiJobsRouteWithChildren
+  '/api/photo': typeof ApiPhotoRouteWithChildren
+  '/api/jobs/$id': typeof ApiJobsIdRoute
+  '/api/photo/$userId': typeof ApiPhotoUserIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -70,6 +105,11 @@ export interface FileRoutesByTo {
   '/reset-password': typeof ResetPasswordRoute
   '/scan': typeof ScanRoute
   '/settings': typeof SettingsRoute
+  '/api/clubs': typeof ApiClubsRoute
+  '/api/jobs': typeof ApiJobsRouteWithChildren
+  '/api/photo': typeof ApiPhotoRouteWithChildren
+  '/api/jobs/$id': typeof ApiJobsIdRoute
+  '/api/photo/$userId': typeof ApiPhotoUserIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -80,6 +120,11 @@ export interface FileRoutesById {
   '/reset-password': typeof ResetPasswordRoute
   '/scan': typeof ScanRoute
   '/settings': typeof SettingsRoute
+  '/api/clubs': typeof ApiClubsRoute
+  '/api/jobs': typeof ApiJobsRouteWithChildren
+  '/api/photo': typeof ApiPhotoRouteWithChildren
+  '/api/jobs/$id': typeof ApiJobsIdRoute
+  '/api/photo/$userId': typeof ApiPhotoUserIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,6 +136,11 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/scan'
     | '/settings'
+    | '/api/clubs'
+    | '/api/jobs'
+    | '/api/photo'
+    | '/api/jobs/$id'
+    | '/api/photo/$userId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -100,6 +150,11 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/scan'
     | '/settings'
+    | '/api/clubs'
+    | '/api/jobs'
+    | '/api/photo'
+    | '/api/jobs/$id'
+    | '/api/photo/$userId'
   id:
     | '__root__'
     | '/'
@@ -109,6 +164,11 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/scan'
     | '/settings'
+    | '/api/clubs'
+    | '/api/jobs'
+    | '/api/photo'
+    | '/api/jobs/$id'
+    | '/api/photo/$userId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -119,6 +179,9 @@ export interface RootRouteChildren {
   ResetPasswordRoute: typeof ResetPasswordRoute
   ScanRoute: typeof ScanRoute
   SettingsRoute: typeof SettingsRoute
+  ApiClubsRoute: typeof ApiClubsRoute
+  ApiJobsRoute: typeof ApiJobsRouteWithChildren
+  ApiPhotoRoute: typeof ApiPhotoRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -172,8 +235,66 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/clubs': {
+      id: '/api/clubs'
+      path: '/api/clubs'
+      fullPath: '/api/clubs'
+      preLoaderRoute: typeof ApiClubsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/jobs': {
+      id: '/api/jobs'
+      path: '/api/jobs'
+      fullPath: '/api/jobs'
+      preLoaderRoute: typeof ApiJobsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/photo': {
+      id: '/api/photo'
+      path: '/api/photo'
+      fullPath: '/api/photo'
+      preLoaderRoute: typeof ApiPhotoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/jobs/$id': {
+      id: '/api/jobs/$id'
+      path: '/$id'
+      fullPath: '/api/jobs/$id'
+      preLoaderRoute: typeof ApiJobsIdRouteImport
+      parentRoute: typeof ApiJobsRoute
+    }
+    '/api/photo/$userId': {
+      id: '/api/photo/$userId'
+      path: '/$userId'
+      fullPath: '/api/photo/$userId'
+      preLoaderRoute: typeof ApiPhotoUserIdRouteImport
+      parentRoute: typeof ApiPhotoRoute
+    }
   }
 }
+
+interface ApiJobsRouteChildren {
+  ApiJobsIdRoute: typeof ApiJobsIdRoute
+}
+
+const ApiJobsRouteChildren: ApiJobsRouteChildren = {
+  ApiJobsIdRoute: ApiJobsIdRoute,
+}
+
+const ApiJobsRouteWithChildren =
+  ApiJobsRoute._addFileChildren(ApiJobsRouteChildren)
+
+interface ApiPhotoRouteChildren {
+  ApiPhotoUserIdRoute: typeof ApiPhotoUserIdRoute
+}
+
+const ApiPhotoRouteChildren: ApiPhotoRouteChildren = {
+  ApiPhotoUserIdRoute: ApiPhotoUserIdRoute,
+}
+
+const ApiPhotoRouteWithChildren = ApiPhotoRoute._addFileChildren(
+  ApiPhotoRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -183,6 +304,9 @@ const rootRouteChildren: RootRouteChildren = {
   ResetPasswordRoute: ResetPasswordRoute,
   ScanRoute: ScanRoute,
   SettingsRoute: SettingsRoute,
+  ApiClubsRoute: ApiClubsRoute,
+  ApiJobsRoute: ApiJobsRouteWithChildren,
+  ApiPhotoRoute: ApiPhotoRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
