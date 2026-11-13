@@ -30,6 +30,7 @@ use the editor.
 <!-- LOVABLE:END -->
 
 ## RacQr architecture
+- Store account types in protected user_roles with one-time authenticated onboarding; club staff privileges still require approved membership, and personal rackets use owner-only RLS independently of immutable job records.
 - Keep workspace data in Lovable Cloud with tenant-scoped RLS and protected membership roles; client controls are never permission boundaries.
 - Use shared browser-safe QR codecs for link fragments and plain text, and never treat printed payment snapshots as verified collection.
 - Use public TanStack content routes with inline sign-in prompts; no private records render until the authenticated Cloud query succeeds.
