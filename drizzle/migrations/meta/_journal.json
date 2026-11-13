@@ -8,6 +8,13 @@
       "when": 1794608886889,
       "tag": "0000_racqr_workspace",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794609460529,
+      "tag": "0001_restrict_racqr_function_access",
+      "breakpoints": true
     }
   ]
 }

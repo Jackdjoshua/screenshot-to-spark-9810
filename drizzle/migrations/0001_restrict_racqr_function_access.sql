@@ -1,0 +1,3 @@
+REVOKE EXECUTE ON FUNCTION public.racqr_staff(uuid),public.racqr_admin(uuid),public.racqr_member(uuid),public.racqr_can_view_profile(uuid),public.racqr_join_club(text,text) FROM anon;
+REVOKE EXECUTE ON FUNCTION public.racqr_new_profile(),public.racqr_club_owner(),public.racqr_job_defaults() FROM PUBLIC,anon,authenticated;
+GRANT EXECUTE ON FUNCTION public.racqr_staff(uuid),public.racqr_admin(uuid),public.racqr_member(uuid),public.racqr_can_view_profile(uuid),public.racqr_join_club(text,text) TO authenticated;
