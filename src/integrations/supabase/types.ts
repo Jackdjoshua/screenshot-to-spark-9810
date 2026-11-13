@@ -223,13 +223,83 @@ export type Database = {
         }
         Relationships: []
       }
+      rackets: {
+        Row: {
+          created_at: string
+          crosses_string: string
+          crosses_tension: number
+          head_size: number
+          id: string
+          mains_string: string
+          mains_tension: number
+          name: string
+          notes: string
+          pattern: string
+          unit: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          crosses_string?: string
+          crosses_tension?: number
+          head_size?: number
+          id?: string
+          mains_string?: string
+          mains_tension?: number
+          name: string
+          notes?: string
+          pattern?: string
+          unit?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          crosses_string?: string
+          crosses_tension?: number
+          head_size?: number
+          id?: string
+          mains_string?: string
+          mains_tension?: number
+          name?: string
+          notes?: string
+          pattern?: string
+          unit?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "rackets_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_roles: {
+        Row: {
+          role: string
+          user_id: string
+        }
+        Insert: {
+          role: string
+          user_id: string
+        }
+        Update: {
+          role?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
+      racqr_account_stringer: { Args: never; Returns: boolean }
       racqr_admin: { Args: { c: string }; Returns: boolean }
       racqr_can_view_profile: { Args: { p: string }; Returns: boolean }
+      racqr_choose_account: { Args: { account_type: string }; Returns: string }
       racqr_join_club: {
         Args: { club_slug: string; requested_role?: string }
         Returns: string

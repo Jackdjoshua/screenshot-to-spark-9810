@@ -15,6 +15,13 @@
       "when": 1794609460529,
       "tag": "0001_restrict_racqr_function_access",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794611168554,
+      "tag": "0002_player_stringer_accounts_and_rackets",
+      "breakpoints": true
     }
   ]
 }

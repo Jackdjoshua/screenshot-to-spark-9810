@@ -1,4 +1,5 @@
 # RacQr migration
+- [ ] Add secure player/stringer onboarding, player racket editing, and role-specific navigation and club permissions.
 - [x] Rebuild six workspace screens and open-standard QR tags.
 - [x] Cloud profiles, clubs, protected roles, tenant-scoped jobs and private photo uploads.
 - [x] Restore legacy club/job/photo API paths and camel-case fields with Cloud authentication.
