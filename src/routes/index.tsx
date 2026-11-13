@@ -1,23 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-
-// The home route ships no og:image, so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+import { RacqrShell } from '@/components/racqr-shell';
+import { NewJob } from '@/components/racqr-new';
+import { pageHead } from '@/lib/page-head';
+import { useEffect, useState } from 'react';
+import { decodeTag, type Job } from '@/lib/racqr';
+import { JobDialog } from '@/components/racqr-jobs';
 export const Route = createFileRoute("/")({
+  head: () => pageHead('New stringing job', 'Create a racket stringing job with precise tensions, repeat setups, and open-standard QR tags.'),
   component: Index,
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
+  const [tag,setTag]=useState<Partial<Job>|null>(null);
+  useEffect(()=>{const read=()=>{if(window.location.hash.startsWith('#/j?'))setTag(decodeTag(window.location.href));else {const path=window.location.hash.slice(1);if(['/new','/scan','/jobs','/calendar','/profile','/settings'].includes(path))window.location.replace(path==='/new'?'/':path);}};read();window.addEventListener('hashchange',read);return()=>window.removeEventListener('hashchange',read)},[]);
+  return <RacqrShell><NewJob/>{tag&&<JobDialog job={tag} onClose={()=>{setTag(null);history.replaceState(null,'',window.location.pathname)}}/>}</RacqrShell>;
 }
