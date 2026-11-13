@@ -1,8 +1,13 @@
-# RacQr rebuild
-- [x] Rebuild six screens, job tags, printing, scanner and calendar.
-- [x] Enable Cloud profiles, club membership and tenant-scoped jobs.
-- [x] Add installability and guarded offline support.
-- [x] Verify conversions, QR codecs, signed-in job workflow and tenant isolation.
-- [ ] Verify offline operation in published app and physical camera/scanner/printer hardware (requires publication and devices).
-- [ ] Import existing records, users and photo bytes (awaiting exports).
-- [ ] Cut over existing external API callers and any S3 photo provider (awaiting caller and provider details).
+# RacQr migration
+- [x] Rebuild six workspace screens and open-standard QR tags.
+- [x] Cloud profiles, clubs, protected roles, tenant-scoped jobs and private photo uploads.
+- [x] Restore legacy club/job/photo API paths and camel-case fields with Cloud authentication.
+- [x] Verify signed-in job workflow, API CRUD, tenant isolation and private photo permissions.
+- [x] Verify real QR-image scanning, multiline 250 ms scanner buffer, and thermal label rendering.
+- [x] Add installability and guarded offline support; 13 unit/routing tests pass.
+- [ ] Import existing records and auth identities; map original user IDs (blocked: missing CSV/JSON exports).
+- [ ] Import existing photos or preserve configured S3 storage (blocked: missing files/provider details).
+- [ ] Verify imported-user email confirmation, new password and original-data access (blocked: missing user export).
+- [ ] Publish and verify installed/offline app and live sign-in (blocked: publication not requested).
+- [ ] Test physical camera, barcode scanner and printer (blocked: user's devices required).
+- [ ] Cut over external callers and old QR host/domain (blocked: existing site/domain and caller details).

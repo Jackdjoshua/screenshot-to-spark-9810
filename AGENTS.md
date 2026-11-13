@@ -34,3 +34,5 @@ use the editor.
 - Use shared browser-safe QR codecs for link fragments and plain text, and never treat printed payment snapshots as verified collection.
 - Use public TanStack content routes with inline sign-in prompts; no private records render until the authenticated Cloud query succeeds.
 - Keep service-worker registration in the guarded PWA wrapper, with NetworkFirst page caching and no auth/API caching, so previews and account state cannot be trapped in stale caches.
+- Preserve legacy camel-case API contracts through validated TanStack handlers using user-scoped Cloud clients; never accept old auth cookies or use admin clients for ordinary reads.
+- Use the shared scanner buffer for multiline keyboard input, so timing rules stay testable and consistent.
