@@ -14,13 +14,228 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      club_members: {
+        Row: {
+          approved: boolean
+          club_id: string
+          id: string
+          role: string
+          user_id: string
+        }
+        Insert: {
+          approved?: boolean
+          club_id: string
+          id?: string
+          role?: string
+          user_id: string
+        }
+        Update: {
+          approved?: boolean
+          club_id?: string
+          id?: string
+          role?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "club_members_club_id_fkey"
+            columns: ["club_id"]
+            isOneToOne: false
+            referencedRelation: "clubs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "club_members_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      clubs: {
+        Row: {
+          created_at: string
+          currency: string
+          default_unit: string
+          id: string
+          name: string
+          owner_id: string
+          slug: string
+        }
+        Insert: {
+          created_at?: string
+          currency?: string
+          default_unit?: string
+          id?: string
+          name: string
+          owner_id: string
+          slug: string
+        }
+        Update: {
+          created_at?: string
+          currency?: string
+          default_unit?: string
+          id?: string
+          name?: string
+          owner_id?: string
+          slug?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "clubs_owner_id_fkey"
+            columns: ["owner_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      jobs: {
+        Row: {
+          amount: number
+          club_id: string
+          created_at: string | null
+          crosses_string: string | null
+          crosses_tension: number
+          currency: string | null
+          customer_email: string | null
+          customer_id: string | null
+          customer_name: string
+          customer_phone: string | null
+          date_in: string
+          head_size: number | null
+          id: string
+          job_number: string
+          knots: number | null
+          mains_string: string
+          mains_tension: number
+          notes: string | null
+          pattern: string | null
+          payment_method: string | null
+          payment_status: string
+          pre_stretch: string | null
+          racket: string
+          ready_by: string | null
+          status: string
+          unit: string
+        }
+        Insert: {
+          amount?: number
+          club_id: string
+          created_at?: string | null
+          crosses_string?: string | null
+          crosses_tension: number
+          currency?: string | null
+          customer_email?: string | null
+          customer_id?: string | null
+          customer_name: string
+          customer_phone?: string | null
+          date_in?: string
+          head_size?: number | null
+          id?: string
+          job_number?: string
+          knots?: number | null
+          mains_string: string
+          mains_tension: number
+          notes?: string | null
+          pattern?: string | null
+          payment_method?: string | null
+          payment_status?: string
+          pre_stretch?: string | null
+          racket: string
+          ready_by?: string | null
+          status?: string
+          unit?: string
+        }
+        Update: {
+          amount?: number
+          club_id?: string
+          created_at?: string | null
+          crosses_string?: string | null
+          crosses_tension?: number
+          currency?: string | null
+          customer_email?: string | null
+          customer_id?: string | null
+          customer_name?: string
+          customer_phone?: string | null
+          date_in?: string
+          head_size?: number | null
+          id?: string
+          job_number?: string
+          knots?: number | null
+          mains_string?: string
+          mains_tension?: number
+          notes?: string | null
+          pattern?: string | null
+          payment_method?: string | null
+          payment_status?: string
+          pre_stretch?: string | null
+          racket?: string
+          ready_by?: string | null
+          status?: string
+          unit?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "jobs_club_id_fkey"
+            columns: ["club_id"]
+            isOneToOne: false
+            referencedRelation: "clubs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "jobs_customer_id_fkey"
+            columns: ["customer_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_path: string | null
+          email: string
+          id: string
+          name: string
+          original_user_id: string | null
+          phone: string
+          pickup_code: string
+        }
+        Insert: {
+          avatar_path?: string | null
+          email?: string
+          id: string
+          name?: string
+          original_user_id?: string | null
+          phone?: string
+          pickup_code?: string
+        }
+        Update: {
+          avatar_path?: string | null
+          email?: string
+          id?: string
+          name?: string
+          original_user_id?: string | null
+          phone?: string
+          pickup_code?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      racqr_admin: { Args: { c: string }; Returns: boolean }
+      racqr_can_view_profile: { Args: { p: string }; Returns: boolean }
+      racqr_join_club: {
+        Args: { club_slug: string; requested_role?: string }
+        Returns: string
+      }
+      racqr_member: { Args: { c: string }; Returns: boolean }
+      racqr_staff: { Args: { c: string }; Returns: boolean }
     }
     Enums: {
       [_ in never]: never
