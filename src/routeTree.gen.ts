@@ -9,37 +9,28 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as CalendarRouteImport } from './routes/calendar'
-import { Route as JobsRouteImport } from './routes/jobs'
-import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
-import { Route as ScanRouteImport } from './routes/scan'
-import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
+import { Route as AuthenticatedCalendarRouteImport } from './routes/_authenticated/calendar'
+import { Route as AuthenticatedJobsRouteImport } from './routes/_authenticated/jobs'
+import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
+import { Route as AuthenticatedScanRouteImport } from './routes/_authenticated/scan'
+import { Route as AuthenticatedSettingsRouteImport } from './routes/_authenticated/settings'
 import { Route as ApiClubsRouteImport } from './routes/api.clubs'
 import { Route as ApiJobsRouteImport } from './routes/api.jobs'
 import { Route as ApiPhotoRouteImport } from './routes/api.photo'
 import { Route as ApiJobsIdRouteImport } from './routes/api.jobs.$id'
 import { Route as ApiPhotoUserIdRouteImport } from './routes/api.photo.$userId'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CalendarRoute = CalendarRouteImport.update({
-  id: '/calendar',
-  path: '/calendar',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const JobsRoute = JobsRouteImport.update({
-  id: '/jobs',
-  path: '/jobs',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProfileRoute = ProfileRouteImport.update({
-  id: '/profile',
-  path: '/profile',
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResetPasswordRoute = ResetPasswordRouteImport.update({
@@ -47,15 +38,35 @@ const ResetPasswordRoute = ResetPasswordRouteImport.update({
   path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ScanRoute = ScanRouteImport.update({
+const AuthenticatedIndexRoute = AuthenticatedIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedCalendarRoute = AuthenticatedCalendarRouteImport.update({
+  id: '/calendar',
+  path: '/calendar',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedJobsRoute = AuthenticatedJobsRouteImport.update({
+  id: '/jobs',
+  path: '/jobs',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedScanRoute = AuthenticatedScanRouteImport.update({
   id: '/scan',
   path: '/scan',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const SettingsRoute = SettingsRouteImport.update({
+const AuthenticatedSettingsRoute = AuthenticatedSettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const ApiClubsRoute = ApiClubsRouteImport.update({
   id: '/api/clubs',
@@ -84,13 +95,14 @@ const ApiPhotoUserIdRoute = ApiPhotoUserIdRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/calendar': typeof CalendarRoute
-  '/jobs': typeof JobsRoute
-  '/profile': typeof ProfileRoute
+  '/': typeof AuthenticatedIndexRoute
+  '/auth': typeof AuthRoute
   '/reset-password': typeof ResetPasswordRoute
-  '/scan': typeof ScanRoute
-  '/settings': typeof SettingsRoute
+  '/calendar': typeof AuthenticatedCalendarRoute
+  '/jobs': typeof AuthenticatedJobsRoute
+  '/profile': typeof AuthenticatedProfileRoute
+  '/scan': typeof AuthenticatedScanRoute
+  '/settings': typeof AuthenticatedSettingsRoute
   '/api/clubs': typeof ApiClubsRoute
   '/api/jobs': typeof ApiJobsRouteWithChildren
   '/api/photo': typeof ApiPhotoRouteWithChildren
@@ -98,31 +110,34 @@ export interface FileRoutesByFullPath {
   '/api/photo/$userId': typeof ApiPhotoUserIdRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/calendar': typeof CalendarRoute
-  '/jobs': typeof JobsRoute
-  '/profile': typeof ProfileRoute
+  '/auth': typeof AuthRoute
   '/reset-password': typeof ResetPasswordRoute
-  '/scan': typeof ScanRoute
-  '/settings': typeof SettingsRoute
+  '/calendar': typeof AuthenticatedCalendarRoute
+  '/jobs': typeof AuthenticatedJobsRoute
+  '/profile': typeof AuthenticatedProfileRoute
+  '/scan': typeof AuthenticatedScanRoute
+  '/settings': typeof AuthenticatedSettingsRoute
   '/api/clubs': typeof ApiClubsRoute
   '/api/jobs': typeof ApiJobsRouteWithChildren
   '/api/photo': typeof ApiPhotoRouteWithChildren
+  '/': typeof AuthenticatedIndexRoute
   '/api/jobs/$id': typeof ApiJobsIdRoute
   '/api/photo/$userId': typeof ApiPhotoUserIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/calendar': typeof CalendarRoute
-  '/jobs': typeof JobsRoute
-  '/profile': typeof ProfileRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
   '/reset-password': typeof ResetPasswordRoute
-  '/scan': typeof ScanRoute
-  '/settings': typeof SettingsRoute
+  '/_authenticated/calendar': typeof AuthenticatedCalendarRoute
+  '/_authenticated/jobs': typeof AuthenticatedJobsRoute
+  '/_authenticated/profile': typeof AuthenticatedProfileRoute
+  '/_authenticated/scan': typeof AuthenticatedScanRoute
+  '/_authenticated/settings': typeof AuthenticatedSettingsRoute
   '/api/clubs': typeof ApiClubsRoute
   '/api/jobs': typeof ApiJobsRouteWithChildren
   '/api/photo': typeof ApiPhotoRouteWithChildren
+  '/_authenticated/': typeof AuthenticatedIndexRoute
   '/api/jobs/$id': typeof ApiJobsIdRoute
   '/api/photo/$userId': typeof ApiPhotoUserIdRoute
 }
@@ -130,10 +145,11 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/auth'
+    | '/reset-password'
     | '/calendar'
     | '/jobs'
     | '/profile'
-    | '/reset-password'
     | '/scan'
     | '/settings'
     | '/api/clubs'
@@ -143,42 +159,41 @@ export interface FileRouteTypes {
     | '/api/photo/$userId'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
+    | '/auth'
+    | '/reset-password'
     | '/calendar'
     | '/jobs'
     | '/profile'
-    | '/reset-password'
     | '/scan'
     | '/settings'
     | '/api/clubs'
     | '/api/jobs'
     | '/api/photo'
+    | '/'
     | '/api/jobs/$id'
     | '/api/photo/$userId'
   id:
     | '__root__'
-    | '/'
-    | '/calendar'
-    | '/jobs'
-    | '/profile'
+    | '/_authenticated'
+    | '/auth'
     | '/reset-password'
-    | '/scan'
-    | '/settings'
+    | '/_authenticated/calendar'
+    | '/_authenticated/jobs'
+    | '/_authenticated/profile'
+    | '/_authenticated/scan'
+    | '/_authenticated/settings'
     | '/api/clubs'
     | '/api/jobs'
     | '/api/photo'
+    | '/_authenticated/'
     | '/api/jobs/$id'
     | '/api/photo/$userId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  CalendarRoute: typeof CalendarRoute
-  JobsRoute: typeof JobsRoute
-  ProfileRoute: typeof ProfileRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
-  ScanRoute: typeof ScanRoute
-  SettingsRoute: typeof SettingsRoute
   ApiClubsRoute: typeof ApiClubsRoute
   ApiJobsRoute: typeof ApiJobsRouteWithChildren
   ApiPhotoRoute: typeof ApiPhotoRouteWithChildren
@@ -186,32 +201,18 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/calendar': {
-      id: '/calendar'
-      path: '/calendar'
-      fullPath: '/calendar'
-      preLoaderRoute: typeof CalendarRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/jobs': {
-      id: '/jobs'
-      path: '/jobs'
-      fullPath: '/jobs'
-      preLoaderRoute: typeof JobsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/profile': {
-      id: '/profile'
-      path: '/profile'
-      fullPath: '/profile'
-      preLoaderRoute: typeof ProfileRouteImport
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/reset-password': {
@@ -221,19 +222,47 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/scan': {
-      id: '/scan'
+    '/_authenticated/': {
+      id: '/_authenticated/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/calendar': {
+      id: '/_authenticated/calendar'
+      path: '/calendar'
+      fullPath: '/calendar'
+      preLoaderRoute: typeof AuthenticatedCalendarRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/jobs': {
+      id: '/_authenticated/jobs'
+      path: '/jobs'
+      fullPath: '/jobs'
+      preLoaderRoute: typeof AuthenticatedJobsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/profile': {
+      id: '/_authenticated/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AuthenticatedProfileRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/scan': {
+      id: '/_authenticated/scan'
       path: '/scan'
       fullPath: '/scan'
-      preLoaderRoute: typeof ScanRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedScanRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/settings': {
-      id: '/settings'
+    '/_authenticated/settings': {
+      id: '/_authenticated/settings'
       path: '/settings'
       fullPath: '/settings'
-      preLoaderRoute: typeof SettingsRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedSettingsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/api/clubs': {
       id: '/api/clubs'
@@ -273,6 +302,27 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedCalendarRoute: typeof AuthenticatedCalendarRoute
+  AuthenticatedJobsRoute: typeof AuthenticatedJobsRoute
+  AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
+  AuthenticatedScanRoute: typeof AuthenticatedScanRoute
+  AuthenticatedSettingsRoute: typeof AuthenticatedSettingsRoute
+  AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedCalendarRoute: AuthenticatedCalendarRoute,
+  AuthenticatedJobsRoute: AuthenticatedJobsRoute,
+  AuthenticatedProfileRoute: AuthenticatedProfileRoute,
+  AuthenticatedScanRoute: AuthenticatedScanRoute,
+  AuthenticatedSettingsRoute: AuthenticatedSettingsRoute,
+  AuthenticatedIndexRoute: AuthenticatedIndexRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 interface ApiJobsRouteChildren {
   ApiJobsIdRoute: typeof ApiJobsIdRoute
 }
@@ -297,13 +347,9 @@ const ApiPhotoRouteWithChildren = ApiPhotoRoute._addFileChildren(
 )
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  CalendarRoute: CalendarRoute,
-  JobsRoute: JobsRoute,
-  ProfileRoute: ProfileRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
   ResetPasswordRoute: ResetPasswordRoute,
-  ScanRoute: ScanRoute,
-  SettingsRoute: SettingsRoute,
   ApiClubsRoute: ApiClubsRoute,
   ApiJobsRoute: ApiJobsRouteWithChildren,
   ApiPhotoRoute: ApiPhotoRouteWithChildren,

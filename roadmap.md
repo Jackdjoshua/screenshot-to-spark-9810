@@ -1,4 +1,5 @@
 # RacQr migration
+- [ ] Require sign-in for every workspace page and make the avatar open profile editing; verify direct links and sign-out.
 - [x] Add secure player/stringer onboarding, player racket editing, and role-specific navigation and club permissions; verified signed-in flows and owner-only access.
 - [x] Rebuild six workspace screens and open-standard QR tags.
 - [x] Cloud profiles, clubs, protected roles, tenant-scoped jobs and private photo uploads.
