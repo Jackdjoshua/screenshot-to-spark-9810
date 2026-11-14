@@ -8,7 +8,8 @@ try:
  requests.post(url+'/rest/v1/rpc/racqr_choose_account',headers=ch,json={'account_type':'player'}).raise_for_status()
  r=requests.post(url+'/rest/v1/clubs',headers=ch,json={'name':'Forbidden','slug':'forbidden-'+secrets.token_hex(4),'owner_id':customer});assert r.status_code==403
  r=requests.post(url+'/rest/v1/rpc/racqr_choose_account',headers=ch,json={'account_type':'stringer'});r.raise_for_status();assert r.json()=='player'
- r=requests.patch(url+'/rest/v1/user_roles?user_id=eq.'+customer,headers=ch,json={'role':'stringer'});assert r.status_code==403
+ r=requests.patch(url+'/rest/v1/user_roles?user_id=eq.'+customer,headers=ch,json={'role':'stringer'});assert r.status_code==403 or (r.status_code==200 and r.json()==[])
+ r=requests.get(url+'/rest/v1/user_roles?user_id=eq.'+customer,headers=ch);r.raise_for_status();assert r.json()[0]['role']=='player'
  r=requests.post(url+'/rest/v1/rackets',headers=ch,json={'user_id':customer,'name':'Player Blade','head_size':98,'mains_tension':52});r.raise_for_status();racket=r.json()[0]
  r=requests.patch(url+'/rest/v1/rackets?id=eq.'+racket['id'],headers=ch,json={'head_size':100,'mains_tension':54});r.raise_for_status();assert r.json()[0]['head_size']==100 and r.json()[0]['mains_tension']==54
  r=requests.get(url+'/rest/v1/rackets?id=eq.'+racket['id'],headers=xh);r.raise_for_status();assert r.json()==[]
