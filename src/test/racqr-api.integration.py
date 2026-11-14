@@ -5,6 +5,7 @@ try:
  def user(name):
   email='racqr-api-'+secrets.token_hex(5)+'@example.com';pw=secrets.token_urlsafe(24);r=requests.post(url+'/auth/v1/admin/users',headers=admin,json={'email':email,'password':pw,'email_confirm':True,'user_metadata':{'name':name}});r.raise_for_status();uid=r.json()['id'];users.append(uid);r=requests.post(url+'/auth/v1/token?grant_type=password',headers={'apikey':key},json={'email':email,'password':pw});r.raise_for_status();return uid,{'Authorization':'Bearer '+r.json()['access_token']}
  owner,oh=user('API staff');customer,ch=user('API customer');outsider,xh=user('API outsider')
+ requests.post(url+'/rest/v1/rpc/racqr_choose_account',headers={'apikey':key,**oh},json={'account_type':'stringer'}).raise_for_status()
  assert requests.get(base+'/api/clubs').status_code==401
  r=requests.post(base+'/api/clubs',headers=oh,json={'name':'API Verification'});r.raise_for_status();club=r.json()['club'];oh['X-Club-Id']=club['id'];ch['X-Club-Id']=club['id'];xh['X-Club-Id']=club['id']
  r=requests.get(base+'/api/clubs',headers=oh);r.raise_for_status();assert r.json()['memberships'][0]['role']=='admin'

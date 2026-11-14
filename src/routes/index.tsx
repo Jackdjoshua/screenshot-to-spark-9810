@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { decodeTag, type Job } from '@/lib/racqr';
 import { JobDialog } from '@/components/racqr-jobs';
 export const Route = createFileRoute("/")({
-  head: () => pageHead('New stringing job', 'Create a racket stringing job with precise tensions, repeat setups, and open-standard QR tags.'),
+  head: () => pageHead('Racket stringing requests', 'Request your next racket setup or create a club stringing job with precise tensions and open-standard QR tags.'),
   component: Index,
 });
 function Index() {
