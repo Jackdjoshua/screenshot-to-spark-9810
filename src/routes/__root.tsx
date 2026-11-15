@@ -51,8 +51,9 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
           This page didn't load
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+          Temporary diagnostic details are shown below to help identify the issue.
         </p>
+        <pre className="mt-3 max-h-40 overflow-auto whitespace-pre-wrap break-words rounded-md bg-muted p-3 text-left text-xs text-foreground">{error instanceof Error ? `${error.name}: ${error.message}`.replace(/Bearer\\s+\\S+/gi, "Bearer [redacted]").replace(/sb_(?:publishable|secret)_[A-Za-z0-9_-]+/g, "[Supabase key redacted]").slice(0, 500) : String(error).slice(0, 500)}</pre>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
             onClick={() => {
