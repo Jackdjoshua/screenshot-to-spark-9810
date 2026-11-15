@@ -40,3 +40,5 @@ Keep the public site on Wix and link its app/login buttons to the deployed Worke
 ## Verification
 
 A successful build, deployment, authentication test, and Wix link test must each be verified before launch. These instructions do not claim those checks have already passed.
+
+Cloudflare deployment configuration verified.
