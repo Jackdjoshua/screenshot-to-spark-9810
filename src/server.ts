@@ -51,6 +51,20 @@ function isH3SwallowedErrorBody(body: string): boolean {
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      // TanStack/Supabase reads configuration from process.env. Explicitly copy
+      // Cloudflare bindings into it before importing the server entry so SSR
+      // sees the runtime values regardless of process.env population timing.
+      if (env && typeof env === "object") {
+        const bindings = env as Record<string, unknown>;
+        if (typeof process !== "undefined" && process.env) {
+          for (const key of ["SUPABASE_URL", "SUPABASE_PUBLISHABLE_KEY"]) {
+            const value = bindings[key];
+            if (typeof value === "string" && value.length > 0) {
+              process.env[key] = value;
+            }
+          }
+        }
+      }
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
       return await normalizeCatastrophicSsrResponse(response);
