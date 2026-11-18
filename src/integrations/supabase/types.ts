@@ -55,28 +55,52 @@ export type Database = {
       }
       clubs: {
         Row: {
+          available_strings: string
+          brand_color: string
+          contact_email: string
           created_at: string
           currency: string
+          default_price: number
           default_unit: string
+          description: string
           id: string
+          logo_url: string
+          website: string
+          welcome_message: string
           name: string
           owner_id: string
           slug: string
         }
         Insert: {
+          available_strings?: string
+          brand_color?: string
+          contact_email?: string
           created_at?: string
           currency?: string
+          default_price?: number
           default_unit?: string
+          description?: string
           id?: string
+          logo_url?: string
+          website?: string
+          welcome_message?: string
           name: string
           owner_id: string
           slug: string
         }
         Update: {
+          available_strings?: string
+          brand_color?: string
+          contact_email?: string
           created_at?: string
           currency?: string
+          default_price?: number
           default_unit?: string
+          description?: string
           id?: string
+          logo_url?: string
+          website?: string
+          welcome_message?: string
           name?: string
           owner_id?: string
           slug?: string
