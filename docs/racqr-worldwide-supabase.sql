@@ -6,8 +6,9 @@
 --   * Existing clubs default to private (public_listing = false).
 --   * Does not DROP the existing two-argument racqr_join_club function.
 --   * Keeps the two-argument RPC working for existing app versions.
---   * Public directory reads go through a view with an explicit allow-list
---     of public fields through a narrowly scoped RPC; no public SELECT policy is added to clubs.
+--   * Public directory reads use a narrowly scoped SECURITY DEFINER RPC
+--     with an explicit allow-list of fields; no public SELECT policy is added to clubs.
+--   * SECURITY DEFINER functions use an empty search_path and schema-qualified objects.
 --
 -- This file is documentation only. Saving it to GitHub does not run it
 -- against Supabase. The application must also be updated to use the
@@ -43,7 +44,7 @@ returns table (
 language sql
 stable
 security definer
-set search_path = public
+set search_path = ''
 as $$
   select
     c.id,
@@ -135,8 +136,9 @@ from public.clubs
 on conflict (club_id) do nothing;
 
 -- 4. Add a three-argument join function that checks invitation codes for
--- private clubs. It does not delete or replace the existing two-argument
--- function, so other database objects depending on that function are safe.
+-- private clubs. Existing members retain an idempotent re-join path; this
+-- does not grant them additional membership or approval. The function does
+-- not delete or replace the existing two-argument function.
 create or replace function public.racqr_join_club(
   club_slug text,
   requested_role text,
@@ -145,7 +147,7 @@ create or replace function public.racqr_join_club(
 returns uuid
 language plpgsql
 security definer
-set search_path = public
+set search_path = ''
 as $$
 declare
   target_club uuid;
@@ -200,7 +202,7 @@ create or replace function public.racqr_join_club(
 returns uuid
 language sql
 security definer
-set search_path = public
+set search_path = ''
 as $$
   select public.racqr_join_club(club_slug, requested_role, null::text);
 $$;
