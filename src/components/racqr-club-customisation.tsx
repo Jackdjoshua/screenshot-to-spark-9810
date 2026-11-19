@@ -6,7 +6,7 @@ import {useWorkspace} from '@/lib/workspace';
 import {supabase} from '@/integrations/supabase/client';
 import {toast} from 'sonner';
 
-const currencies = [
+// Worldwide listing fields are saved separately so older databases keep existing customisation working.\nconst currencies = [
   {value:'$',label:'US Dollar ($)'},
   {value:'£',label:'British Pound (£)'},
   {value:'€',label:'Euro (€)'},
