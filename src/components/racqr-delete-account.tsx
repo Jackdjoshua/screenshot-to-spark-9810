@@ -16,6 +16,36 @@ export function RacqrDeleteAccount(){
 
   async function deleteAccount(){
     setDeleting(true);
+
+    // Remove the private profile photo through the Storage API. Do not delete
+    // storage.objects directly in SQL; Storage manages its own object metadata.
+    const {data:userData,error:userError}=await supabase.auth.getUser();
+    if(userError||!userData.user){
+      toast.error(userError?.message||'Please sign in again before deleting your account.');
+      setDeleting(false);
+      return;
+    }
+    const {data:profile,error:profileError}=await supabase
+      .from('profiles')
+      .select('avatar_path')
+      .eq('id',userData.user.id)
+      .maybeSingle();
+    if(profileError){
+      toast.error(profileError.message);
+      setDeleting(false);
+      return;
+    }
+    if(profile?.avatar_path){
+      const {error:photoError}=await supabase.storage
+        .from('profile-photos')
+        .remove([profile.avatar_path]);
+      if(photoError){
+        toast.error(`Could not remove your profile photo: ${photoError.message}`);
+        setDeleting(false);
+        return;
+      }
+    }
+
     const {error}=await (supabase as any).rpc('racqr_delete_account');
     if(error){
       toast.error(error.message);
