@@ -8,8 +8,11 @@
 --   * Preserves club jobs and their customer details, while detaching the deleted profile.
 --   * Deletes the user's profile, memberships, account role, rackets and Auth user
 --     through the existing ON DELETE CASCADE relationships.
--- --   * Does not delete clubs or other members' records.
---
+--   * Does not delete clubs or other members' records.
+--   * Does not delete the profile photo from Storage. That requires a trusted
+--     server-side cleanup process; deleting it from the client before this
+--     transaction succeeds could remove it even when account deletion is blocked.
+
 -- The function must be owned by a privileged database role (normally postgres)
 -- so it can delete from auth.users. Execute as the Supabase
 -- SQL Editor project owner.
