@@ -125,9 +125,7 @@ export function RacqrClubCustomisation(){
         <div className="field-grid">
           <Field id="club-default-price" label={`Default stringing price (${currency})`}><input id="club-default-price" type="number" min="0" step="0.01" inputMode="decimal" value={defaultPrice} onChange={e=>setDefaultPrice(e.target.value)}/></Field>
           <Field id="club-currency" label="Currency"><select id="club-currency" value={currency} onChange={e=>setCurrency(e.target.value)}>{currencies.map(item=><option key={item.value} value={item.value}>{item.label}</option>)}</select></Field>
-          <Field id="club-available-strings" label="Available strings (one per line)"><textarea id="club-available-strings" value={availableStrings} onChange={e=>setAvailableStrings(e.target.value)} rows={5} placeholder={'Wilson NXT
-Luxilon ALU Power
-RPM Blast'}/></Field>
+          <Field id="club-available-strings" label="Available strings (one per line)"><textarea id="club-available-strings" value={availableStrings} onChange={e=>setAvailableStrings(e.target.value)} rows={5} placeholder={'Wilson NXT\nLuxilon ALU Power\nRPM Blast'}/></Field>
         </div>
         <p className="text-xs text-muted-foreground mt-2">These are club defaults for now; they won't change existing jobs.</p>
       </div>
