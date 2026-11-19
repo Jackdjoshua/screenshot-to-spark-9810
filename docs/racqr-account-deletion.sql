@@ -8,11 +8,10 @@
 --   * Preserves club jobs and their customer details, while detaching the deleted profile.
 --   * Deletes the user's profile, memberships, account role, rackets and Auth user
 --     through the existing ON DELETE CASCADE relationships.
---   * Removes profile-photo objects stored under the user's folder.
---   * Does not delete clubs or other members' records.
+-- --   * Does not delete clubs or other members' records.
 --
 -- The function must be owned by a privileged database role (normally postgres)
--- so it can delete from auth.users and storage.objects. Execute as the Supabase
+-- so it can delete from auth.users. Execute as the Supabase
 -- SQL Editor project owner.
 
 begin;
@@ -89,11 +88,6 @@ begin
   update public.jobs
      set customer_id = null
    where customer_id = deleting_user;
-
-  -- Profile photos are private to the user's folder; remove them as well.
-  delete from storage.objects
-   where bucket_id = 'profile-photos'
-     and (storage.foldername(name))[1] = deleting_user::text;
 
   -- Cascades remove profiles, memberships, user_roles and personal rackets.
   -- Any failure above aborts this transaction, including all ownership changes.
