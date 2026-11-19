@@ -189,7 +189,7 @@ begin
 end;
 $$;
 
-revoke all on function public.racqr_join_club(text, text, text) from public;
+revoke all on function public.racqr_join_club(text, text, text) from public, anon;
 grant execute on function public.racqr_join_club(text, text, text) to authenticated;
 
 -- 5. Keep the original two-argument RPC contract for existing app versions.
@@ -207,7 +207,7 @@ as $$
   select public.racqr_join_club(club_slug, requested_role, null::text);
 $$;
 
-revoke all on function public.racqr_join_club(text, text) from public;
+revoke all on function public.racqr_join_club(text, text) from public, anon;
 grant execute on function public.racqr_join_club(text, text) to authenticated;
 
 commit;
