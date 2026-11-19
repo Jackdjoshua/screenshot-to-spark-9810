@@ -1,5 +1,5 @@
 import {useEffect,useState,type FormEvent} from 'react';
-import {Palette,Save} from 'lucide-react';
+import {Palette,Save,Globe2,KeyRound,RefreshCw} from 'lucide-react';
 import {Button} from '@/components/ui/button';
 import {Field} from './racqr-new';
 import {useWorkspace} from '@/lib/workspace';
@@ -28,7 +28,7 @@ export function RacqrClubCustomisation(){
   const [defaultPrice,setDefaultPrice]=useState('0');
   const [currency,setCurrency]=useState('$');
   const [availableStrings,setAvailableStrings]=useState('');
-  const [saving,setSaving]=useState(false);
+  const [saving,setSaving]=useState(false);\n  const [publicListing,setPublicListing]=useState(false);\n  const [city,setCity]=useState('');\n  const [country,setCountry]=useState('');\n  const [coverImageUrl,setCoverImageUrl]=useState('');\n  const [invitationCode,setInvitationCode]=useState('');\n  const [codeLoading,setCodeLoading]=useState(false);
 
   useEffect(()=>{
     setDescription(club?.description||'');
@@ -39,10 +39,10 @@ export function RacqrClubCustomisation(){
     setBrandColor(club?.brand_color||'#0f766e');
     setDefaultPrice(String(club?.default_price??0));
     setCurrency(club?.currency||'$');
-    setAvailableStrings(club?.available_strings||'');
+    setAvailableStrings(club?.available_strings||'');\n    const extra=club as typeof club & {public_listing?:boolean;city?:string;country?:string;cover_image_url?:string};\n    setPublicListing(extra?.public_listing??false);\n    setCity(extra?.city||'');\n    setCountry(extra?.country||'');\n    setCoverImageUrl(extra?.cover_image_url||'');\n    setInvitationCode('');
   },[club]);
 
-  if(!w.isAdmin||!club)return null;
+  useEffect(()=>{let active=true;if(!club||!w.isAdmin)return;setCodeLoading(true);(supabase as any).from('club_invitation_codes').select('code').eq('club_id',club.id).maybeSingle().then(({data,error}:{data:{code:string}|null,error:unknown})=>{if(!active)return;if(!error)setInvitationCode(data?.code||'');setCodeLoading(false);});return()=>{active=false};},[club?.id,w.isAdmin]);\n\n  if(!w.isAdmin||!club)return null;
 
   async function save(e:FormEvent<HTMLFormElement>){
     e.preventDefault();
@@ -55,7 +55,7 @@ export function RacqrClubCustomisation(){
       try{const u=new URL(website.trim());if(!['http:','https:'].includes(u.protocol))throw new Error();}
       catch{toast.error('Enter a valid website URL beginning with https://');return;}
     }
-    const price=Number(defaultPrice);
+    if(coverImageUrl.trim()){try{const u=new URL(coverImageUrl.trim());if(!['http:','https:'].includes(u.protocol))throw new Error();}catch{toast.error('Enter a valid cover image URL beginning with https://');return;}}\n    const price=Number(defaultPrice);
     if(!Number.isFinite(price)||price<0){toast.error('Default stringing price must be zero or greater.');return;}
     setSaving(true);
     const {error}=await supabase.from('clubs').update({
@@ -67,8 +67,8 @@ export function RacqrClubCustomisation(){
       brand_color:brandColor,
       default_price:price,
       currency,
-      available_strings:availableStrings.trim(),
-    }).eq('id',club.id);
+      available_strings:availableStrings.trim(),\n      public_listing:publicListing,\n      city:city.trim(),\n      country:country.trim(),\n      cover_image_url:coverImageUrl.trim(),
+    } as any).eq('id',club.id);
     setSaving(false);
     if(error){toast.error(error.message);return;}
     toast.success('Club customisation saved.');
