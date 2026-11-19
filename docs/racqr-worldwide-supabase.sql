@@ -7,7 +7,7 @@
 --   * Does not DROP the existing two-argument racqr_join_club function.
 --   * Keeps the two-argument RPC working for existing app versions.
 --   * Public directory reads go through a view with an explicit allow-list
---     of public fields; no broad public SELECT policy is added to clubs.
+--     of public fields through a narrowly scoped RPC; no public SELECT policy is added to clubs.
 --
 -- This file is documentation only. Saving it to GitHub does not run it
 -- against Supabase. The application must also be updated to use the
@@ -22,30 +22,47 @@ alter table public.clubs
   add column if not exists city text not null default '',
   add column if not exists country text not null default '';
 
--- 2. Expose only approved directory fields.
--- The view runs with its owner's permissions (security_invoker=false), so
--- the existing member-only clubs RLS policy is not bypassed by adding a
--- broad SELECT policy to public.clubs. Only columns listed below are exposed.
-create or replace view public.public_clubs
-with (security_barrier = true, security_invoker = false)
-as
-select
-  id,
-  name,
-  slug,
-  description,
-  website,
-  logo_url,
-  cover_image_url,
-  brand_color,
-  city,
-  country,
-  created_at
-from public.clubs
-where public_listing = true;
+-- 2. Expose only approved directory fields through a narrowly scoped RPC.
+-- A SECURITY DEFINER function is used instead of a view, so its output is
+-- explicitly limited to these columns and it does not require a public-read
+-- policy or broader SELECT access on public.clubs.
+create or replace function public.racqr_public_clubs()
+returns table (
+  id uuid,
+  name text,
+  slug text,
+  description text,
+  website text,
+  logo_url text,
+  cover_image_url text,
+  brand_color text,
+  city text,
+  country text,
+  created_at timestamptz
+)
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select
+    c.id,
+    c.name,
+    c.slug,
+    c.description,
+    c.website,
+    c.logo_url,
+    c.cover_image_url,
+    c.brand_color,
+    c.city,
+    c.country,
+    c.created_at
+  from public.clubs c
+  where c.public_listing = true;
+$$;
 
-revoke all on public.public_clubs from anon, public;
-grant select on public.public_clubs to authenticated;
+revoke all on function public.racqr_public_clubs() from public, anon;
+grant execute on function public.racqr_public_clubs() to authenticated;
 
 -- 3. Store private-club invitation codes separately from club records.
 create table if not exists public.club_invitation_codes (
@@ -110,9 +127,10 @@ end
 $$;
 
 -- Generate a code for every existing club without changing existing codes.
--- UUID randomness avoids requiring the pgcrypto gen_random_bytes function.
+-- A full UUID gives each code 122+ bits of random entropy; no pgcrypto
+-- extension is needed. Existing codes are never overwritten on re-run.
 insert into public.club_invitation_codes (club_id, code)
-select id, upper(substr(replace(gen_random_uuid()::text, '-', ''), 1, 10))
+select id, upper(replace(gen_random_uuid()::text, '-', ''))
 from public.clubs
 on conflict (club_id) do nothing;
 
