@@ -1,5 +1,5 @@
 import {useState,type FormEvent} from 'react';
-import {UserRound,Wrench,Building2,ArrowRight,Plus} from 'lucide-react';
+import {UserRound,Wrench,Building2,ArrowRight,Plus,LogOut} from 'lucide-react';
 import {Button} from '@/components/ui/button';
 import {supabase} from '@/integrations/supabase/client';
 import {toast} from 'sonner';
@@ -51,5 +51,6 @@ export function AccountChoice({accountType,onComplete}:{accountType:AccountType|
    </form>
    {accountType==='stringer'&&<><div className="divider">OR</div><form className="auth-form" onSubmit={createClub}><div className="field"><label htmlFor="onboarding-club-name">Create a pro shop workspace</label><input id="onboarding-club-name" name="club_name" placeholder="Your pro shop or club name" required/></div><Button type="submit" variant="outline" disabled={busy} className="w-full"><Plus/>Create workspace</Button></form></>}
   </>}
+  <div className="mt-5 flex justify-end"><Button type="button" variant="ghost" size="sm" disabled={busy} onClick={async()=>{await supabase.auth.signOut();}}><LogOut/>Sign out</Button></div>
  </section></div>;
 }
