@@ -135,7 +135,8 @@ select id, upper(replace(gen_random_uuid()::text, '-', ''))
 from public.clubs
 on conflict (club_id) do nothing;
 
--- 4. Add a three-argument join function that checks invitation codes for
+-- 4. Add a three-argument join function that checks the short club code or
+-- invitation codes for
 -- private clubs. Existing members retain an idempotent re-join path; this
 -- does not grant them additional membership or approval. The function does
 -- not delete or replace the existing two-argument function.
@@ -163,6 +164,7 @@ begin
     and (
       c.public_listing = true
       or public.racqr_member(c.id)
+      or lower(c.slug) = lower(trim(coalesce(racqr_join_club.invitation_code, '')))
       or exists (
         select 1
         from public.club_invitation_codes ic
