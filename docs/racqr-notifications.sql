@@ -22,7 +22,8 @@ create index if not exists racqr_notifications_unread_idx
 
 alter table public.racqr_notifications enable row level security;
 revoke all on public.racqr_notifications from anon, public;
-grant select, update on public.racqr_notifications to authenticated;
+grant select on public.racqr_notifications to authenticated;
+grant update (read_at) on public.racqr_notifications to authenticated;
 
 drop policy if exists racqr_notifications_read_own on public.racqr_notifications;
 create policy racqr_notifications_read_own
