@@ -16,7 +16,7 @@ export function download(name:string,content:string,type='text/csv'){const a=doc
 
 // Permanent racket QR codes identify the physical racket, never a stringing job.
 // The token is an opaque UUID stored on the club's racket record; it contains no PII.
-const racketQrPattern = /^RACQR\\/RACKET\\/1 ([0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})$/i;
+const racketQrPattern = /^RACQR\/RACKET\/1 ([0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})$/i;
 export function encodeRacketTag(qrToken:string) {
   if (!racketQrPattern.test(`RACQR/RACKET/1 ${qrToken}`)) throw new Error('Invalid racket QR token');
   return `RACQR/RACKET/1 ${qrToken.toLowerCase()}`;
