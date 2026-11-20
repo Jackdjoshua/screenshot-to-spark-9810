@@ -20,14 +20,21 @@ export function AccountChoice({accountType,onComplete}:{accountType:AccountType|
   if(error)toast.error(error.message);else onComplete();
  }
  async function joinClub(e:FormEvent<HTMLFormElement>){
-  e.preventDefault();setBusy(true);setErrorMessage('');
+  e.preventDefault();
+  if(busy)return;
   const form=new FormData(e.currentTarget);
   const code=String(form.get('club_code')||'').trim().toLowerCase();
+  if(!code){toast.error('Enter your club code.');return;}
   const role=accountType==='player'?'customer':'stringer';
-  const result=await (supabase as any).rpc('racqr_join_club',{club_slug:code,requested_role:role,invitation_code:code});
-  setBusy(false);
-  if(result.error)toast.error(result.error.message);
-  else {toast.success(accountType==='player'?'You have joined the club.':'Your staff request has been sent.');onComplete();}
+  setBusy(true);
+  try{
+   const {error}=await (supabase as any).rpc('racqr_join_club',{club_slug:code,requested_role:role,invitation_code:code});
+   if(error){toast.error(error.message.includes('Club not found')?'We could not find that club. Check the code and try again.':error.message);return;}
+   toast.success(accountType==='player'?'You have joined the club.':'Your staff request has been sent.');
+   onComplete();
+  }catch(error){
+   toast.error(error instanceof Error?error.message:'Could not join the club. Please try again.');
+  }finally{setBusy(false);}
  }
  async function createClub(e:FormEvent<HTMLFormElement>){
   e.preventDefault();if(accountType!=='stringer')return;
@@ -42,8 +49,8 @@ export function AccountChoice({accountType,onComplete}:{accountType:AccountType|
    <div className="modal-head"><h2>Connect to a club</h2></div>
    <p className="text-sm text-muted-foreground mb-5">RacQr works through tennis clubs and pro shops. Join your club to finish setting up your account.</p>
    <form className="auth-form" onSubmit={joinClub}>
-    <div className="field"><label htmlFor="onboarding-club-code">6-character club code</label><input id="onboarding-club-code" name="club_code" placeholder="e.g. 8K4P2M" autoCapitalize="characters" autoComplete="off" required/></div>
-    <Button disabled={busy} className="w-full"><Building2/>Join club</Button>
+    <div className="field"><label htmlFor="onboarding-club-code">6-character club code</label><input id="onboarding-club-code" name="club_code" placeholder="e.g. 8K4P2M" autoCapitalize="characters" autoComplete="off" autoCorrect="off" spellCheck={false} inputMode="text" required/></div>
+    <Button type="submit" disabled={busy} className="w-full">{busy?'Joining…':<><Building2/>Join club</>}</Button>
    </form>
    {accountType==='stringer'&&<><div className="divider">OR</div><form className="auth-form" onSubmit={createClub}><div className="field"><label htmlFor="onboarding-club-name">Create a pro shop workspace</label><input id="onboarding-club-name" name="club_name" placeholder="Your pro shop or club name" required/></div><Button type="submit" variant="outline" disabled={busy} className="w-full"><Plus/>Create workspace</Button></form></>}
   </>}
