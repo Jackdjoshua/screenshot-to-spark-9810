@@ -4,6 +4,7 @@ import {Button} from '@/components/ui/button';
 import {supabase} from '@/integrations/supabase/client';
 import {toast} from 'sonner';
 import type {AccountType} from '@/lib/account-access';
+import {generateClubCode} from '@/lib/account-access';
 
 export function AccountTypeSelector({value,onChange}:{value:AccountType,onChange:(value:AccountType)=>void}) {
  return <div className="segment mb-5" aria-label="Account type">{(['player','stringer'] as const).map(type=><Button key={type} type="button" variant="ghost" aria-pressed={value===type} className={value===type?'selected flex-1':'flex-1'} onClick={()=>onChange(type)}>{type==='player'?<UserRound/>:<Wrench/>}{type==='player'?'Player':'Stringer'}</Button>)}</div>;
@@ -12,9 +13,8 @@ export function AccountTypeSelector({value,onChange}:{value:AccountType,onChange
 export function AccountChoice({accountType,onComplete}:{accountType:AccountType|null,onComplete:()=>void}) {
  const [type,setType]=useState<AccountType>(accountType||'player');
  const [busy,setBusy]=useState(false);
- const [errorMessage,setErrorMessage]=useState('');
  async function chooseType(){
-  setBusy(true);setErrorMessage('');
+  setBusy(true);
   const {error}=await supabase.rpc('racqr_choose_account',{account_type:type});
   setBusy(false);
   if(error)toast.error(error.message);else onComplete();
@@ -22,12 +22,9 @@ export function AccountChoice({accountType,onComplete}:{accountType:AccountType|
  async function joinClub(e:FormEvent<HTMLFormElement>){
   e.preventDefault();setBusy(true);setErrorMessage('');
   const form=new FormData(e.currentTarget);
-  const slug=String(form.get('club_code')||'').trim();
-  const code=String(form.get('invitation_code')||'').trim();
+  const code=String(form.get('club_code')||'').trim().toLowerCase();
   const role=accountType==='player'?'customer':'stringer';
-  const result=code
-   ?await (supabase as any).rpc('racqr_join_club',{club_slug:slug,requested_role:role,invitation_code:code})
-   :await supabase.rpc('racqr_join_club',{club_slug:slug,requested_role:role});
+  const result=await (supabase as any).rpc('racqr_join_club',{club_slug:code,requested_role:role,invitation_code:code});
   setBusy(false);
   if(result.error)toast.error(result.error.message);
   else {toast.success(accountType==='player'?'You have joined the club.':'Your staff request has been sent.');onComplete();}
@@ -35,7 +32,7 @@ export function AccountChoice({accountType,onComplete}:{accountType:AccountType|
  async function createClub(e:FormEvent<HTMLFormElement>){
   e.preventDefault();if(accountType!=='stringer')return;
   setBusy(true);const form=new FormData(e.currentTarget);const name=String(form.get('club_name')||'').trim();
-  const slug=name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')+'-'+crypto.randomUUID().slice(0,4);
+  const slug=generateClubCode();
   const {error}=await supabase.from('clubs').insert({name,slug,owner_id:(await supabase.auth.getUser()).data.user?.id||'',default_unit:'lb',currency:'USD'});
   setBusy(false);
   if(error)toast.error(error.message);else{toast.success('Club workspace created. You are its admin.');onComplete();}
@@ -45,8 +42,7 @@ export function AccountChoice({accountType,onComplete}:{accountType:AccountType|
    <div className="modal-head"><h2>Connect to a club</h2></div>
    <p className="text-sm text-muted-foreground mb-5">RacQr works through tennis clubs and pro shops. Join your club to finish setting up your account.</p>
    <form className="auth-form" onSubmit={joinClub}>
-    <div className="field"><label htmlFor="onboarding-club-code">Club code</label><input id="onboarding-club-code" name="club_code" placeholder="Enter the club code" required/></div>
-    <div className="field"><label htmlFor="onboarding-invitation">Invitation code</label><input id="onboarding-invitation" name="invitation_code" placeholder="Only needed for private clubs (optional)"/></div>
+    <div className="field"><label htmlFor="onboarding-club-code">6-character club code</label><input id="onboarding-club-code" name="club_code" placeholder="e.g. 8K4P2M" minLength={6} maxLength={6} autoCapitalize="characters" autoComplete="off" required/></div>
     <Button disabled={busy} className="w-full"><Building2/>Join club</Button>
    </form>
    {accountType==='stringer'&&<><div className="divider">OR</div><form className="auth-form" onSubmit={createClub}><div className="field"><label htmlFor="onboarding-club-name">Create a pro shop workspace</label><input id="onboarding-club-name" name="club_name" placeholder="Your pro shop or club name" required/></div><Button type="submit" variant="outline" disabled={busy} className="w-full"><Plus/>Create workspace</Button></form></>}
