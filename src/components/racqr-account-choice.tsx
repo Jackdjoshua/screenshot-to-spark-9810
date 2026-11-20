@@ -36,7 +36,7 @@ export function AccountChoice({accountType,onComplete}:{accountType:AccountType|
   e.preventDefault();if(accountType!=='stringer')return;
   setBusy(true);const form=new FormData(e.currentTarget);const name=String(form.get('club_name')||'').trim();
   const slug=name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')+'-'+crypto.randomUUID().slice(0,4);
-  const {error}=await supabase.from('clubs').insert({name,slug,owner_id:(await supabase.auth.getUser()).data.user?.id||'',default_unit:'lb',currency:'$'});
+  const {error}=await supabase.from('clubs').insert({name,slug,owner_id:(await supabase.auth.getUser()).data.user?.id||'',default_unit:'lb',currency:'USD'});
   setBusy(false);
   if(error)toast.error(error.message);else{toast.success('Club workspace created. You are its admin.');onComplete();}
  }
