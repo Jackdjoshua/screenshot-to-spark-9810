@@ -19,3 +19,35 @@
 @media(max-width:760px){.nav a{flex-direction:column;justify-content:center;font-size:10px;gap:4px;padding:0 4px;min-width:0}.nav{gap:3px}.input-unit span{white-space:nowrap}.topbar{max-width:100%}.heading-tools{flex-shrink:0}.view-heading h1{max-width:235px}.form-footer .actions{flex-wrap:wrap}.tag-bottom span{overflow-wrap:anywhere}}
 
 .racket-qr-sticker-preview{width:76px;height:76px;flex:0 0 76px;background:#fff;border:1px solid var(--border);border-radius:4px;padding:5px}.racket-qr-sticker-preview img{width:100%;height:100%;image-rendering:pixelated}.racket-qr-print-root{display:none}.racket-qr-sticker{width:25.4mm;height:25.4mm;box-sizing:border-box;padding:1.2mm;background:#fff;display:flex;align-items:center;justify-content:center}.racket-qr-sticker img{width:23mm;height:23mm;object-fit:contain;image-rendering:pixelated}@media print{.racket-qr-print-root{display:block!important;position:absolute;inset:0;background:#fff!important}.racket-qr-sticker{break-inside:avoid;page-break-inside:avoid}}
+
+
+/* Header notification centre */
+.top-right{gap:10px}
+.notification-wrap{position:relative;z-index:80}
+.notification-trigger{position:relative;width:38px;height:38px;border:1px solid transparent;border-radius:50%;display:grid;place-items:center;background:transparent;color:var(--foreground)}
+.notification-trigger:hover,.notification-trigger[aria-expanded="true"]{background:var(--secondary);border-color:var(--border)}
+.notification-count{position:absolute;top:-2px;right:-3px;min-width:17px;height:17px;padding:0 4px;border-radius:99px;background:var(--destructive);color:#fff;font-size:9px;font-weight:800;display:grid;place-items:center;border:2px solid var(--card)}
+.notification-dismiss{position:fixed;inset:0;z-index:79;cursor:default;background:transparent}
+.notification-panel{position:absolute;right:-52px;top:48px;width:min(370px,calc(100vw - 28px));max-height:min(520px,calc(100svh - 105px));overflow:hidden;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--border);border-radius:9px;box-shadow:0 14px 42px oklch(.15 .02 255 / .18);z-index:81}
+.notification-panel-head{display:flex;align-items:center;justify-content:space-between;padding:16px 17px;border-bottom:1px solid var(--border);gap:10px}
+.notification-panel-head>div{display:flex;flex-direction:column;gap:3px}
+.notification-panel-head strong{font-size:14px;font-weight:800}
+.notification-panel-head small{font-size:10px;color:var(--muted-foreground)}
+.notification-panel-head>button{display:flex;align-items:center;gap:5px;background:transparent;color:var(--primary);font-size:10px;font-weight:750;white-space:nowrap}
+.notification-panel-head>button:disabled{opacity:.4;cursor:default}
+.notification-list{overflow:auto}
+.notification-item{border-bottom:1px solid var(--border)}
+.notification-item:last-child{border-bottom:0}
+.notification-item>a,.notification-item>button{width:100%;min-height:76px;padding:13px 15px;display:flex;align-items:flex-start;gap:11px;text-align:left;background:transparent}
+.notification-item>a:hover,.notification-item>button:hover{background:var(--muted)}
+.notification-item.is-unread{background:color-mix(in oklch,var(--accent) 35%,var(--card))}
+.notification-icon{width:32px;height:32px;flex:0 0 32px;display:grid;place-items:center;border-radius:50%;background:var(--secondary);color:var(--primary)}
+.notification-icon.member_request,.notification-icon.member_approval{background:color-mix(in oklch,var(--positive) 12%,var(--card));color:var(--positive)}
+.notification-copy{display:flex;flex:1;min-width:0;flex-direction:column;gap:4px}
+.notification-copy strong{font-size:11px;font-weight:800}
+.notification-copy>span{font-size:11px;line-height:1.45;color:var(--muted-foreground)}
+.notification-copy small{font-size:9px;color:var(--muted-foreground);margin-top:2px}
+.notification-unread-dot{width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:var(--primary);margin-top:6px}
+.notification-empty{min-height:145px;padding:25px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;color:var(--muted-foreground);font-size:11px;line-height:1.5}
+.notification-empty svg{color:var(--primary);opacity:.7}
+@media(max-width:760px){.notification-panel{right:-49px;top:46px;width:min(360px,calc(100vw - 24px));max-height:calc(100svh - 145px)}.top-right{gap:7px}.notification-trigger{width:35px;height:35px}}
