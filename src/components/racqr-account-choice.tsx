@@ -42,7 +42,7 @@ export function AccountChoice({accountType,onComplete}:{accountType:AccountType|
    <div className="modal-head"><h2>Connect to a club</h2></div>
    <p className="text-sm text-muted-foreground mb-5">RacQr works through tennis clubs and pro shops. Join your club to finish setting up your account.</p>
    <form className="auth-form" onSubmit={joinClub}>
-    <div className="field"><label htmlFor="onboarding-club-code">6-character club code</label><input id="onboarding-club-code" name="club_code" placeholder="e.g. 8K4P2M" minLength={6} maxLength={6} autoCapitalize="characters" autoComplete="off" required/></div>
+    <div className="field"><label htmlFor="onboarding-club-code">6-character club code</label><input id="onboarding-club-code" name="club_code" placeholder="e.g. 8K4P2M" autoCapitalize="characters" autoComplete="off" required/></div>
     <Button disabled={busy} className="w-full"><Building2/>Join club</Button>
    </form>
    {accountType==='stringer'&&<><div className="divider">OR</div><form className="auth-form" onSubmit={createClub}><div className="field"><label htmlFor="onboarding-club-name">Create a pro shop workspace</label><input id="onboarding-club-name" name="club_name" placeholder="Your pro shop or club name" required/></div><Button type="submit" variant="outline" disabled={busy} className="w-full"><Plus/>Create workspace</Button></form></>}
