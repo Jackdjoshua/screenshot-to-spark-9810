@@ -17,7 +17,7 @@ export function Field({label,id,optional,children,hint}:{label:string,id:string,
 function recentCustomers(jobs:Job[]) {
  const seen=new Set<string>();
  return jobs.filter(job=>{
-  const key=(job.customer_id||job.customer_email||job.customer_phone||job.customer_name).trim().toLowerCase();
+  const key=String(job.customer_id||job.customer_email||job.customer_phone||job.customer_name||'').trim().toLowerCase();
   if(!key||seen.has(key))return false;
   seen.add(key);return true;
  });
