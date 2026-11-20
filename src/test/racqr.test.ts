@@ -2,3 +2,12 @@ import {describe,it,expect} from 'vitest';
 import {convertTension,convertHead,repeatSetup,encodeTag,decodeTag,csvCell,type Job} from '@/lib/racqr';
 const job={job_number:'ABBEY-0042',customer_name:'Zoë',racket:'Wilson Blade 98',mains_string:'ALU Power',mains_tension:24,crosses_tension:23.5,unit:'kg',head_size:98,payment_status:'p',status:'collected',amount:25,date_in:'2026-11-10',ready_by:'2026-11-12',customer_phone:'+44123',knots:4} as Job;
 describe('RacQr rules',()=>{it('converts 1 kg to 2.20462 lb',()=>expect(convertTension(1,'kg')).toBe(2.20462));it('converts 1 sq in to 6.4516 cm²',()=>expect(convertHead(1)).toBe(6.4516));it('repeats setup but resets status and payment',()=>expect(repeatSetup(job)).toMatchObject({racket:'Wilson Blade 98',mains_tension:24,status:'received',payment_status:'u',amount:0,ready_by:''}));it('keeps job data only in link fragment',()=>{const url=new URL(encodeTag(job,'https://racqr.example'));expect(url.search).toBe('');expect(decodeTag(url.href)).toMatchObject({job_number:'ABBEY-0042',mains_tension:24});});it('compact tags omit phone',()=>expect(encodeTag(job,'https://racqr.example',false,true)).not.toContain('p='));it('plain tags round trip tensions and paid snapshot',()=>expect(decodeTag(encodeTag(job,'',true))).toMatchObject({mains_tension:24,unit:'kg',payment_status:'p'}));it('neutralizes spreadsheet formulas',()=>expect(csvCell('=1+1')).toBe('"\'=1+1"'));});
+it('encodes a permanent racket QR without embedding customer or setup details',()=>{
+ const token='123e4567-e89b-42d3-a456-426614174000';
+ expect(encodeRacketTag(token)).toBe(`RACQR/RACKET/1 ${token}`);
+ expect(decodeRacketTag(encodeRacketTag(token))).toBe(token);
+});
+it('rejects malformed racket QR tokens',()=>{
+ expect(decodeRacketTag('RACQR/RACKET/1 not-a-token')).toBeNull();
+ expect(()=>encodeRacketTag('not-a-token')).toThrow('Invalid racket QR token');
+});
