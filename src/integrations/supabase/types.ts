@@ -67,6 +67,7 @@ export type Database = {
           logo_url: string
           website: string
           welcome_message: string
+          workspace_settings: Json
           name: string
           owner_id: string
           slug: string
@@ -84,6 +85,7 @@ export type Database = {
           logo_url?: string
           website?: string
           welcome_message?: string
+          workspace_settings?: Json
           name: string
           owner_id: string
           slug: string
@@ -101,6 +103,7 @@ export type Database = {
           logo_url?: string
           website?: string
           welcome_message?: string
+          workspace_settings?: Json
           name?: string
           owner_id?: string
           slug?: string
