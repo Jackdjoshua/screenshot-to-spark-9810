@@ -35,6 +35,9 @@ export function RacqrClubCustomisation(){
   const [coverImageUrl,setCoverImageUrl]=useState('');
   const [invitationCode,setInvitationCode]=useState('');
   const [codeLoading,setCodeLoading]=useState(false);
+  const [hiddenNavigation,setHiddenNavigation]=useState<string[]>([]);
+  const [navigationLabels,setNavigationLabels]=useState<Record<string,string>>({});
+  const [savingNavigation,setSavingNavigation]=useState(false);
 
   useEffect(()=>{
     setDescription(club?.description||'');
@@ -51,6 +54,9 @@ export function RacqrClubCustomisation(){
     setCity(extra?.city||'');
     setCountry(extra?.country||'');
     setCoverImageUrl(extra?.cover_image_url||'');
+    const workspace=(club as typeof club & {workspace_settings?:{hiddenNavigation?:string[];navigationLabels?:Record<string,string>}})?.workspace_settings;
+    setHiddenNavigation(workspace?.hiddenNavigation||[]);
+    setNavigationLabels(workspace?.navigationLabels||{});
     setInvitationCode('');
   },[club]);
 
@@ -128,6 +134,25 @@ export function RacqrClubCustomisation(){
           <Field id="club-available-strings" label="Available strings (one per line)"><textarea id="club-available-strings" value={availableStrings} onChange={e=>setAvailableStrings(e.target.value)} rows={5} placeholder={'Wilson NXT\nLuxilon ALU Power\nRPM Blast'}/></Field>
         </div>
         <p className="text-xs text-muted-foreground mt-2">These are club defaults for now; they won't change existing jobs.</p>
+      </div>
+      <div className="border-t pt-5">
+        <h3 className="font-bold text-sm mb-2">Workspace layout</h3>
+        <p className="text-xs text-muted-foreground mb-4">Choose which tools appear in this club's main navigation and give them names that match how your team works.</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {([{key:'newJob',label:'New job',defaultName:'New'},{key:'scan',label:'QR scanner',defaultName:'Scan'},{key:'jobs',label:'Job list',defaultName:'Jobs'},{key:'calendar',label:'Calendar',defaultName:'Calendar'},{key:'profile',label:'Profile',defaultName:'Profile'},{key:'worldwide',label:'Worldwide directory',defaultName:'Worldwide'}] as const).map(item=><div key={item.key} className="rounded-md border p-3 space-y-2">
+            <label className="flex items-center gap-2 text-sm font-semibold"><input type="checkbox" className="h-4 w-4 min-h-0" checked={!hiddenNavigation.includes(item.key)} onChange={e=>setHiddenNavigation(current=>e.target.checked?current.filter(key=>key!==item.key):[...current,item.key])}/>{item.label}</label>
+            <input aria-label={item.label+' navigation label'} value={navigationLabels[item.key]||''} onChange={e=>setNavigationLabels(current=>({...current,[item.key]:e.target.value}))} placeholder={item.defaultName+' (default)'}/>
+          </div>)}
+        </div>
+        <Button type="button" className="mt-4" disabled={savingNavigation} onClick={async()=>{
+          if(!club)return;
+          setSavingNavigation(true);
+          const {error}=await supabase.from('clubs').update({workspace_settings:{hiddenNavigation,navigationLabels:Object.fromEntries(Object.entries(navigationLabels).map(([key,value])=>[key,value.trim()]).filter(([,value])=>value))}}).eq('id',club.id);
+          setSavingNavigation(false);
+          if(error){toast.error(error.message);return;}
+          await w.refresh();
+          toast.success('Workspace layout saved.');
+        }}>{savingNavigation?'Saving…':<><Save size={15}/>Save workspace layout</>}</Button>
       </div>
       <Button type="submit" disabled={saving}>{saving?'Saving…':<><Save size={15}/>Save customisation</>}</Button>
     </form>
