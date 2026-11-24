@@ -433,6 +433,31 @@ from (values
     'Penn',
     'Championship Extra Duty Balls',
     'https://topgearathletics.com/cdn/shop/files/shopping_3741a4cb-b6b9-411f-95bb-817f96daa98b_600x.jpg?v=1691505370'
+  )  ,
+  (
+    'Babolat',
+    'Pure Aero 12 Pack',
+    'https://tennishub.com/cdn/shop/files/pureaerov312pkbg_1_900x900.jpg?v=1692842407'
+  ),
+  (
+    'Tecnifibre',
+    'T-Fight 305',
+    'https://njtennisdirect.com/cdn/shop/files/T-Fight3002_907db73b-290c-4a39-916b-da488b8fee52.webp?v=1765920104&width=3840'
+  ),
+  (
+    'Babolat',
+    'Vibration Dampener',
+    'https://images.prodirectsport.com/ProductImages/Main/46358_Main_1728055.jpg'
+  ),
+  (
+    'Dunlop',
+    'Tour Tennis Balls',
+    'https://baselinesports.in/cdn/shop/files/61pZs4g31xL._SX679.jpg?v=1748344607&width=1946'
+  ),
+  (
+    'Wilson',
+    'Pro Dampener',
+    'https://www.wilson.com/en-gb/media/catalog/product/article_images/WR8405801E_/WR8405801E__103c3fc9ae2ffe280ed93dfcd8510d96.png'
   )
 ) as v(brand, name, image_url)
 where p.brand = v.brand
