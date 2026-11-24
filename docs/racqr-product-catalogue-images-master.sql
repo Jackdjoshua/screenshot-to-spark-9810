@@ -458,6 +458,21 @@ from (values
     'Wilson',
     'Pro Dampener',
     'https://cdn.media.amplience.net/i/sportinglife/25499716_2/Pro-Staff-Pro-Feel-Vibration-Dampener?%24default%24=&fmt=auto'
+  )  ,
+  (
+    'Wilson',
+    'Clash 98',
+    'https://www.tennis-point.it/dw/image/v2/BBDP_PRD/on/demandware.static/-/Sites-master-catalog/default/dwde282142/images/007/047/03442000_000.jpg?q=80&sw=2000'
+  ),
+  (
+    'New Balance',
+    'Fresh Foam X 996',
+    'https://media.tennispro.fr/media/catalog/product/cache/1/thumbnail/1200x/9df78eab33525d08d6e5fb8d27136e95/m/c/mch996s6_bleu_5.jpg'
+  ),
+  (
+    'Penn',
+    'Gold Championship Balls',
+    'https://cdn.shopify.com/s/files/1/0246/3295/0863/files/Penn_Tennis_Balls_3pk.jpg?v=1725962790'
   )
 ) as v(brand, name, image_url)
 where p.brand = v.brand
