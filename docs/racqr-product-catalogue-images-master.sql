@@ -383,6 +383,31 @@ from (values
     'Babolat',
     'Pure Strike 100',
     'https://babolat.mx/cdn/shop/files/102579-PS_100_CARBON_GREY-3018-1-Face.png?v=1761528150&width=1920'
+  )  ,
+  (
+    'Babolat',
+    'Pure Aero',
+    'https://www.babolat.ca/cdn/shop/files/101569-PURE_AERO_GEN9-100-3-3_4_left.png?v=1767796138&width=2048'
+  ),
+  (
+    'Tecnifibre',
+    'TFight 300',
+    'https://cdn11.bigcommerce.com/s-hukvtympsj/images/stencil/1280x1280/products/19874/67368/tecnifibre-tfight-300-100-2025-white-mtf37__21681.1739970024.jpg?c=1'
+  ),
+  (
+    'HEAD',
+    'Tour Team 9R',
+    'https://cdn.sportega.eu/noname-47448.webp'
+  ),
+  (
+    'adidas',
+    'Barricade',
+    'https://assets.adidas.com/images/w_940%2Cf_auto%2Cq_auto/b5e753aeb5c14f0f84319421a125ecd4_9366/JR1499_HM1.jpg'
+  ),
+  (
+    'Tourna',
+    'Tourna Grip Original',
+    'https://tennishub.com/cdn/shop/files/Tournagriporiginal3pack_2_1200x1200.jpg?v=1695891065'
   )
 ) as v(brand, name, image_url)
 where p.brand = v.brand
