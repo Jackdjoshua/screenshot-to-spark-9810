@@ -40,6 +40,21 @@ from (values
     'https://cdn.tennisplaza.com/products/2025/06/20272_swvpwx.jpg?aspect_ratio=100%3A101&width=800'
   ),
   (
+    'Wilson',
+    'Pro Overgrip',
+    'https://justtennis.com/cdn/shop/files/WRZ470418_0_PRO_OVERGRIP_WH_WM.png.high-res_70x.jpg?v=1777911084'
+  ),
+  (
+    'Yonex',
+    'Super Grap',
+    'https://justtennis.com/cdn/shop/products/ac102_all_aa5b68d9-ab2a-46e5-9e66-59c598f0d8fb_70x.webp?v=1679778673'
+  ),
+  (
+    'Wilson',
+    'US Open Extra Duty Balls',
+    'https://justtennis.com/cdn/shop/files/WRT106200__298e99697e8d3cb33e18af50276a9d83_70x.webp?v=1743351510'
+  ),
+  (
     'Babolat',
     'RPM Blast',
     'https://justtennis.com/cdn/shop/products/241101-RPM_BLAST_12M-105-1-RECTO.png?v=1772035410'
