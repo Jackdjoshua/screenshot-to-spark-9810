@@ -242,7 +242,7 @@ from (values
   (
     'Babolat',
     'Pure Drive Team',
-    'https://pdhsports.com/cdn/shop/files/102554-PD_TEAM_GEN11_S-100-1-Face.png?v=1736855987&width=400'
+    'https://pdhsports.com/cdn/shop/files/102554-PD_TEAM_GEN11_S-100-1-Face.png?v=1736855987&width=1200'
   ),
   (
     'Wilson',
