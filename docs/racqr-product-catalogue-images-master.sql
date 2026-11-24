@@ -258,6 +258,7 @@ from (values
     'Yonex',
     'EZONE 98',
     'https://www.racquetworld.com.au/cdn/shop/files/2025YonexEzone98MainImage_817x.png?v=1733525376'
+  ),
   (
     'Babolat',
     'RPM Team',
