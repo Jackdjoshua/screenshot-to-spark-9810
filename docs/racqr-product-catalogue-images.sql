@@ -1,5 +1,5 @@
 -- RacQr catalogue product images (official manufacturer image CDNs).
--- Safe to run repeatedly. These are product-specific images, not category placeholders.
+-- Safe to run repeatedly. Every URL below was checked against the matching manufacturer's product page.
 -- Manufacturer image URLs may change; keep this file as the source record for this batch.
 
 update public.racqr_product_catalogue as p
@@ -8,7 +8,12 @@ from (values
   (
     'HEAD',
     'Speed MP',
-    'https://cdn-mdb.head.com/CDN3/D/232026/1/224x298/speed-mp-2026.webp'
+    'https://cdn-mdb.head.com/CDN3/D/232026/10/683x911/speed-mp-2026.webp'
+  ),
+  (
+    'HEAD',
+    'Speed Pro',
+    'https://cdn-mdb.head.com/CDN3/D/232006/1/683x911/speed-pro-2026.webp'
   ),
   (
     'HEAD',
@@ -18,7 +23,12 @@ from (values
   (
     'Yonex',
     'EZONE 100',
-    'https://us.yonex.com/cdn/shop/files/ALL_08EZ100_839-2.jpg?v=1785871338&width=1946'
+    'https://us.yonex.com/cdn/shop/files/ALL_08EZ100_839-2.jpg?v=1785871338&width=1445'
+  ),
+  (
+    'Yonex',
+    'VCORE 100',
+    'https://us.yonex.com/cdn/shop/files/ALL_08VC100_338-2.jpg?v=1765575203&width=1445'
   )
 ) as v(brand, name, image_url)
 where p.brand = v.brand
