@@ -38,6 +38,26 @@ from (values
     'ASICS',
     'GEL-RESOLUTION',
     'https://cdn.tennisplaza.com/products/2025/06/20272_swvpwx.jpg?aspect_ratio=100%3A101&width=800'
+  ),
+  (
+    'Babolat',
+    'RPM Blast',
+    'https://justtennis.com/cdn/shop/products/241101-RPM_BLAST_12M-105-1-RECTO.png?v=1772035410'
+  ),
+  (
+    'Wilson',
+    'NXT',
+    'https://justtennis.com/cdn/shop/products/WRZ942900__108445de0df488cdd2804947088cdf95.webp?v=1678945279'
+  ),
+  (
+    'Yonex',
+    'Poly Tour Pro',
+    'https://justtennis.com/cdn/shop/products/yts_ex_set_ptgr125_160.webp?v=1678946829'
+  ),
+  (
+    'HEAD',
+    'Lynx Tour',
+    'https://justtennis.com/cdn/shop/products/lynx-tour-champagne.jpg?v=1678948436'
   )
 ) as v(brand, name, image_url)
 where p.brand = v.brand
