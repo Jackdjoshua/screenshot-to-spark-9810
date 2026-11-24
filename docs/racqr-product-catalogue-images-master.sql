@@ -85,6 +85,16 @@ from (values
     'https://justtennis.com/cdn/shop/products/lynx-tour-champagne.jpg?v=1678948436'
   ),
   (
+    'Wilson',
+    'Rush Pro',
+    'https://www.wilson.com/cdn/shop/files/WRS336600_0_M_Rush_Pro_4_5_TM_White_Evergreen_Gum_whiteEvergreenGum1a_01.png?v=1792775337&width=1200'
+  ),
+  (
+    'New Balance',
+    '996v5',
+    'https://cdn.phia.com/editorial-manager/products/webp-fit-1000x1000/ed/ed63c2f7dbc092db985326e29c183a7c9e84101bd90ff40b7c8a594f9b7779b3.webp'
+  ),
+  (
     'ASICS',
     'Court FF 3',
     'https://images.asics.com/is/image/asics/1041A370_020_SL_LT_GLB?$sfcc-product$='
