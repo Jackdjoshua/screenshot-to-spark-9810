@@ -85,6 +85,31 @@ from (values
     'https://justtennis.com/cdn/shop/products/lynx-tour-champagne.jpg?v=1678948436'
   ),
   (
+    'Dunlop',
+    'FX 500',
+    'https://us.dunlopsports.com/on/demandware.static/-/Sites-masterCatalog_DunlopSports/default/dwd637eeea/images/large/10369897_DT26_FX-500_1.jpg'
+  ),
+  (
+    'Dunlop',
+    'CX 200',
+    'https://us.dunlopsports.com/on/demandware.static/-/Sites-masterCatalog_DunlopSports/default/dw82244c94/images/large/DT24_10349668-70_CX200_1.jpg'
+  ),
+  (
+    'Yonex',
+    'EZONE 100L',
+    'https://us.yonex.com/cdn/shop/files/EZ08100L_BlastBlue_5888.jpg?v=1739478600&width=1445'
+  ),
+  (
+    'Wilson',
+    'Ultra 100',
+    'https://atrsports.com/cdn/shop/files/WR178811U_0_ULTRA_100_V5_FRM_ElectricBlue.png.high-res_001a5543-2e06-4308-98c2-77c997ae3611.jpg?v=1753478614&width=1080'
+  ),
+  (
+    'Babolat',
+    'Pure Aero Team',
+    'https://pdhsports.com/cdn/shop/files/101571-PURE_AERO_TEAM_GEN9-100-1-Face.png?v=1770904987&width=1024'
+  ),
+  (
     'Wilson',
     'Clash 100L',
     'https://www.wilson.com/cdn/shop/files/WR172911U_0_CLASH_100L_V3_FRM_Black_Infrared_black_03.png?v=1792776392&width=3840'
