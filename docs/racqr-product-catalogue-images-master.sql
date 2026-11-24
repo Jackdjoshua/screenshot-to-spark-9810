@@ -85,6 +85,31 @@ from (values
     'https://justtennis.com/cdn/shop/products/lynx-tour-champagne.jpg?v=1678948436'
   ),
   (
+    'HEAD',
+    'Extreme MP',
+    'https://pdhsports.com/cdn/shop/files/233316ExtremeMP2026_2.jpg?v=1783691639&width=1024'
+  ),
+  (
+    'HEAD',
+    'Boom MP',
+    'https://pdhsports.com/cdn/shop/files/232216BoomMP2026_2.png?v=1772700224&width=1024'
+  ),
+  (
+    'Babolat',
+    'RPM Rough',
+    'https://atrsports.com/cdn/shop/products/Babolat_RPM_Blast_Rough_16_Tennis_String_atr_sports_49a20f84-9a2a-42ad-b0d1-ff91437bfbf7.jpg?v=1762440339&width=1080'
+  ),
+  (
+    'Wilson',
+    'Revolve',
+    'https://www.wilson.com/cdn/shop/files/WRZ946200_1_Revolve_16_OR_orange_01.png?v=1792776317&width=1200'
+  ),
+  (
+    'Luxilon',
+    'ALU Power',
+    'https://www.wilson.com/cdn/shop/files/WRZ990110_0_ALU_Power_125_100m_Reel_Si_silver_01.png?v=1792819873&width=1200'
+  ),
+  (
     'Dunlop',
     'FX 500',
     'https://us.dunlopsports.com/on/demandware.static/-/Sites-masterCatalog_DunlopSports/default/dwd637eeea/images/large/10369897_DT26_FX-500_1.jpg'
