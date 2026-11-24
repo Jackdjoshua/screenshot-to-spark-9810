@@ -83,6 +83,21 @@ from (values
     'HEAD',
     'Lynx Tour',
     'https://justtennis.com/cdn/shop/products/lynx-tour-champagne.jpg?v=1678948436'
+  ),
+  (
+    'Wilson',
+    'Blade 100',
+    'https://atrsports.com/cdn/shop/files/WR208211U_0_BLADE_100_V10_FRM_GREEN.png.high-res_1800x1800.jpg?v=1776449736'
+  ),
+  (
+    'Babolat',
+    'Pure Aero 98',
+    'https://static.wixstatic.com/media/22ea0d_b6d81edc93cc45608aedbc048719ac8f~mv2.png/v1/fill/w_5000%2Ch_5000%2Cal_c%2Cq_95%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/22ea0d_b6d81edc93cc45608aedbc048719ac8f~mv2.png'
+  ),
+  (
+    'Yonex',
+    'EZONE 98',
+    'https://www.racquetworld.com.au/cdn/shop/files/2025YonexEzone98MainImage_817x.png?v=1733525376'
   )
 ) as v(brand, name, image_url)
 where p.brand = v.brand
