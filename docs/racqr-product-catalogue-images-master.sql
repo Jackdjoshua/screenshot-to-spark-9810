@@ -62,7 +62,7 @@ from (values
   (
     'Wilson',
     'US Open Extra Duty Balls',
-    'https://justtennis.com/cdn/shop/files/WRT106200__298e99697e8d3cb33e18af50276a9d83_70x.webp?v=1743351510'
+    'https://www.wilson.com/cdn/shop/files/WRT106200_0_US_Open_Extra_Duty_3_Ball_Can_Black_Gold_yellow_04.png?v=1792775000&width=3840'
   ),
   (
     'Babolat',
