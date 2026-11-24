@@ -86,6 +86,31 @@ from (values
   ),
   (
     'Wilson',
+    'Clash 100L',
+    'https://www.wilson.com/cdn/shop/files/WR172911U_0_CLASH_100L_V3_FRM_Black_Infrared_black_03.png?v=1792776392&width=3840'
+  ),
+  (
+    'HEAD',
+    'Speed MP L',
+    'https://cdn-mdb.head.com/CDN3/D/232036/5/683x911/speed-mp-l-2026.webp'
+  ),
+  (
+    'Yonex',
+    'VCORE 100',
+    'https://us.yonex.com/cdn/shop/files/ALL_08VC100_338-2.jpg?v=1765575203&width=1445'
+  ),
+  (
+    'ASICS',
+    'SOLUTION SPEED FF',
+    'https://images.asics.com/is/image/asics/1041A469_960_SR_LT_GLB?$sfcc-product$='
+  ),
+  (
+    'Babolat',
+    'Pure Strike 98',
+    'https://racquetdepot.com/wp-content/uploads/2024/01/babolat_PURE_STRIKE_98_16x19_2024_101524-323_front_webp-450x450.webp'
+  ),
+  (
+    'Wilson',
     'Rush Pro',
     'https://www.wilson.com/cdn/shop/files/WRS336600_0_M_Rush_Pro_4_5_TM_White_Evergreen_Gum_whiteEvergreenGum1a_01.png?v=1792775337&width=1200'
   ),
