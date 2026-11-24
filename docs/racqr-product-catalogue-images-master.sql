@@ -41,6 +41,11 @@ from (values
   ),
   (
     'Wilson',
+    'Pro Staff 97',
+    'https://www.wilson.com/cdn/shop/files/WR201311U_1_PRO_STAFF_97_CLASSIC_FRM_BLACK_REDYELLOWSTRIPE_black_01.png?v=1792085321&width=1200'
+  ),
+  (
+    'Wilson',
     'Super Tour 9 Pack',
     'https://www.wilson.com/cdn/shop/files/WR8036701_0_Super_Tour_9PK_Red_red_01.png?v=1792776293&width=1200'
   ),
