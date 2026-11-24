@@ -85,6 +85,11 @@ from (values
     'https://justtennis.com/cdn/shop/products/lynx-tour-champagne.jpg?v=1678948436'
   ),
   (
+    'Yonex',
+    'PERCEPT 97',
+    'https://us.yonex.com/cdn/shop/files/ALL_01PE97_472-1_e0da661c-39c8-476c-86b4-5b88c345d4f9.jpg?v=1755873749&width=1445'
+  ),
+  (
     'HEAD',
     'Radical Pro',
     'https://cdn-mdb.head.com/CDN3/D/231005/1/224x298/radical-pro-2025.webp'
