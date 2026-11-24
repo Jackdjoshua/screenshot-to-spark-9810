@@ -358,6 +358,31 @@ from (values
     'Luxilon',
     'Element',
     'https://www.wilson.com/cdn/shop/files/WRZ990105_0_Element_125_Set_Bronze_bronze_01.png?v=1792776579&width=1200'
+  )  ,
+  (
+    'adidas',
+    'Ubersonic',
+    'https://www.cosmossport.gr/3103867-product_large/adidas-adizero-ubersonic-5-tennis-shoes.jpg'
+  ),
+  (
+    'adidas',
+    'Solematch Control',
+    'https://www.tennispro.es/media/catalog/product/cache/7/thumbnail/1200x/9df78eab33525d08d6e5fb8d27136e95/i/f/if9110_blanc_1.jpg'
+  ),
+  (
+    'Wilson',
+    'Kaos Swift',
+    'https://esprit-tennis.com/cdn/shop/files/wrs332260_blanc_1.jpg?v=1714816154'
+  ),
+  (
+    'Babolat',
+    'SFX Evo',
+    'https://media.babolat.com/image/upload/f_auto%2Cq_auto%2Cc_pad%2Cw_3024%2Ch_3024/v1683710287/Product_Media/2024/Tennis/Shoes/SFX/31S24556-SFX_EVO_ALL_COURT_WOMEN-1080-4-3_4.png'
+  ),
+  (
+    'Babolat',
+    'Pure Strike 100',
+    'https://babolat.mx/cdn/shop/files/102579-PS_100_CARBON_GREY-3018-1-Face.png?v=1761528150&width=1920'
   )
 ) as v(brand, name, image_url)
 where p.brand = v.brand
