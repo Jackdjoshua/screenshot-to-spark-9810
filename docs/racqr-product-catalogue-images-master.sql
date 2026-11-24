@@ -283,7 +283,6 @@ from (values
     'Yonex',
     'Poly Tour Rev',
     'https://www.yonex.co.jp/tennis/news/assets_c/2020/11/2011061100_s-thumb-600x600-18739.jpg'
-  ),
   )
 ) as v(brand, name, image_url)
 where p.brand = v.brand
