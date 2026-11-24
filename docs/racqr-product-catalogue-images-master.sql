@@ -308,6 +308,31 @@ from (values
     'Wilson',
     'Pro Overgrip 3 Pack',
     'https://www.wilson.com/cdn/shop/files/WRZ4014BK_1_Pro_Overgrip_Black_Handle_black_01.png?v=1792819908&width=1200'
+  )  ,
+  (
+    'Babolat',
+    'RH12 Pure Aero',
+    'https://media.babolat.com/image/upload/f_auto,q_auto,c_pad,w_1200,h_1200/v1/Products/751238/751238-100MY.png'
+  ),
+  (
+    'Wilson',
+    'Pro Overgrip 12 Pack',
+    'https://www.wilson.com/cdn/shop/files/WRZ4016BK_0_PRO_OVERGRIP_12PK_BK.png'
+  ),
+  (
+    'Babolat',
+    'VS Original Overgrip',
+    'https://www.justtennis.com/cdn/shop/products/download.jpg?v=1680626851'
+  ),
+  (
+    'HEAD',
+    'Xtreme Soft',
+    'https://cdn-mdb.head.com/CDN3/D/285405_BK/1/224x298/xtremesoft-12-pcs-pack-black.webp'
+  ),
+  (
+    'Yonex',
+    'Super Grap 3 Pack',
+    'https://www.justtennis.com/cdn/shop/files/61K4p86TQzL.__AC_SX300_SY300_QL70_FMwebp.webp?v=1729803464'
   )
 ) as v(brand, name, image_url)
 where p.brand = v.brand
