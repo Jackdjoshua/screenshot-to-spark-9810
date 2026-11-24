@@ -258,6 +258,31 @@ from (values
     'Yonex',
     'EZONE 98',
     'https://www.racquetworld.com.au/cdn/shop/files/2025YonexEzone98MainImage_817x.png?v=1733525376'
+  (
+    'Babolat',
+    'RPM Team',
+    'https://cdn.media.amplience.net/i/frasersdev/74055303_o.jpg?v=20240808153046'
+  ),
+  (
+    'Babolat',
+    'VS Touch',
+    'https://www.padelclick.it/foto/articolo/big/35011_babolat-touch-vs-set-12-metri.jpg'
+  ),
+  (
+    'Babolat',
+    'Xcel',
+    'https://www.tenniswarehouse.com.au/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/d/s/dsc_0057.1625358215.jpg'
+  ),
+  (
+    'Yonex',
+    'Poly Tour Strike',
+    'https://www.tennis-point.co.uk/cdn/shop/files/0195440124800000.jpg?crop=center&v=1774923272&width=2500'
+  ),
+  (
+    'Yonex',
+    'Poly Tour Rev',
+    'https://www.yonex.co.jp/tennis/news/assets_c/2020/11/2011061100_s-thumb-600x600-18739.jpg'
+  ),
   )
 ) as v(brand, name, image_url)
 where p.brand = v.brand
