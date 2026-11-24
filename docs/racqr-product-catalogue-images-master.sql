@@ -212,7 +212,7 @@ from (values
   (
     'HEAD',
     'Radical Pro',
-    'https://cdn-mdb.head.com/CDN3/D/231005/1/224x298/radical-pro-2025.webp'
+    'https://cdn-mdb.head.com/CDN3/D/231005/1/683x911/radical-pro-2025.webp'
   ),
   (
     'Wilson',
@@ -227,7 +227,7 @@ from (values
   (
     'HEAD',
     'Speed Pro',
-    'https://cdn-mdb.head.com/CDN3/D/232006/1/224x298/speed-pro-2026.webp'
+    'https://cdn-mdb.head.com/CDN3/D/232006/1/683x911/speed-pro-2026.webp'
   ),
   (
     'Wilson',
@@ -327,7 +327,7 @@ from (values
   (
     'HEAD',
     'Xtreme Soft',
-    'https://cdn-mdb.head.com/CDN3/D/285405_BK/1/224x298/xtremesoft-12-pcs-pack-black.webp'
+    'https://cdn-mdb.head.com/CDN3/D/285405_BK/1/683x911/xtremesoft-12-pcs-pack-black.webp'
   ),
   (
     'Yonex',
