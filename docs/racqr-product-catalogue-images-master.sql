@@ -86,6 +86,11 @@ from (values
   ),
   (
     'Wilson',
+    'Clash 100',
+    'https://www.wilson.com/cdn/shop/files/WR172811U_1_CLASH_100_V3_FRM_Black_Infrared_black_01.png?v=1792776030&width=1200'
+  ),
+  (
+    'Wilson',
     'Ultra 100L',
     'https://atrsports.com/cdn/shop/files/WR178911U_0_ULTRA_100L_V5_FRM_ElectricBlue.png.high-res.jpg?v=1753479034&width=1080'
   ),
