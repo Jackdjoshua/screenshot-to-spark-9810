@@ -457,7 +457,7 @@ from (values
   (
     'Wilson',
     'Pro Dampener',
-    'https://www.wilson.com/en-gb/media/catalog/product/article_images/WR8405801E_/WR8405801E__103c3fc9ae2ffe280ed93dfcd8510d96.png'
+    'https://cdn.media.amplience.net/i/sportinglife/25499716_2/Pro-Staff-Pro-Feel-Vibration-Dampener?%24default%24=&fmt=auto'
   )
 ) as v(brand, name, image_url)
 where p.brand = v.brand
