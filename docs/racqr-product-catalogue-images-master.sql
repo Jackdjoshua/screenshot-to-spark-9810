@@ -85,6 +85,11 @@ from (values
     'https://justtennis.com/cdn/shop/products/lynx-tour-champagne.jpg?v=1678948436'
   ),
   (
+    'HEAD',
+    'Speed Pro',
+    'https://cdn-mdb.head.com/CDN3/D/232006/1/224x298/speed-pro-2026.webp'
+  ),
+  (
     'Wilson',
     'Clash 100',
     'https://www.wilson.com/cdn/shop/files/WR172811U_1_CLASH_100_V3_FRM_Black_Infrared_black_01.png?v=1792776030&width=1200'
