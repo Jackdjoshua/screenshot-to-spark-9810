@@ -86,6 +86,31 @@ from (values
   ),
   (
     'HEAD',
+    'Hawk Touch',
+    'https://cdn-mdb.head.com/CDN3/D/281204_AN/1/683x911/hawk-touch-set-anthracite.webp'
+  ),
+  (
+    'HEAD',
+    'Velocity MLT',
+    'https://cdn-mdb.head.com/CDN3/D/281404_BK/1/683x911/velocity-mlt-set-black.webp'
+  ),
+  (
+    'Wilson',
+    'NXT Power',
+    'https://www.wilson.com/cdn/shop/files/WRZ941800_1_NXT_Power_18_Natural_natural_02.png?v=1792775622&width=3840'
+  ),
+  (
+    'Wilson',
+    'Sensation',
+    'https://www.wilson.com/cdn/shop/files/WRZ941000_1_Sensation_16_Natural_natural_01.png?v=1792776290&width=1200'
+  ),
+  (
+    'Wilson',
+    'Pro Staff X',
+    'https://au.wilson.com/cdn/shop/files/WR210511U_0_PRO_STAFF_X_CLASSIC_FRM_BLACK_REDYELLOWSTRIPE.png.high-res.jpg?v=1765933266&width=3840'
+  ),
+  (
+    'HEAD',
     'Extreme MP',
     'https://pdhsports.com/cdn/shop/files/233316ExtremeMP2026_2.jpg?v=1783691639&width=1024'
   ),
