@@ -86,6 +86,21 @@ from (values
   ),
   (
     'HEAD',
+    'Radical Pro',
+    'https://cdn-mdb.head.com/CDN3/D/231005/1/224x298/radical-pro-2025.webp'
+  ),
+  (
+    'Wilson',
+    'Blade 100L',
+    'https://www.wilson.com/cdn/shop/files/WR208311U_1_BLADE_100L_V10_FRM_GREEN_green_01.png?v=1792775868&width=1200'
+  ),
+  (
+    'Yonex',
+    'VCORE 98',
+    'https://us.yonex.com/cdn/shop/files/ALL_08VC98_338-2.jpg?v=1765566022&width=1946'
+  ),
+  (
+    'HEAD',
     'Speed Pro',
     'https://cdn-mdb.head.com/CDN3/D/232006/1/224x298/speed-pro-2026.webp'
   ),
