@@ -1,8 +1,8 @@
 -- RacQr master catalogue image update
 -- One-run, repeatable update. Only exact product-to-image matches are included.
--- Image sources: official manufacturer product pages/CDNs.
--- Products without a verified image are intentionally left unchanged rather than given
--- a guessed or generic image. The final query lists every remaining product needing an image.
+-- Sources are manufacturer or specialist tennis product images. Product images may be
+-- served through the source site's image CDN; URLs are kept as verified in this file.
+-- Products without a verified match are left unchanged, never assigned a generic image.
 
 begin;
 
@@ -12,17 +12,32 @@ from (values
   (
     'HEAD',
     'Speed MP',
-    'https://cdn-mdb.head.com/CDN3/D/232026/10/683x911/speed-mp-2026.webp'
+    'https://www.thatracket.com/_next/image?q=75&url=%2Fhead-speed-mp-2024.jpeg&w=384'
+  ),
+  (
+    'HEAD',
+    'Radical MP',
+    'https://www.thatracket.com/_next/image?q=75&url=%2Fhead-radical-2023.jpg&w=384'
   ),
   (
     'Wilson',
     'Blade 98 16x19',
-    'https://www.wilson.com/cdn/shop/files/WR207811U_1_BLADE_98_16X19_V10_FRM_GREEN_green_01.png?v=1792775132&width=1200'
+    'https://www.thatracket.com/_next/image?q=75&url=%2Fwilson-blade-98-16x19-2024.jpg&w=384'
+  ),
+  (
+    'Babolat',
+    'Pure Drive',
+    'https://www.thatracket.com/_next/image?q=75&url=%2Fbabolat-pure-drive-2025.jpeg&w=384'
   ),
   (
     'Yonex',
     'EZONE 100',
     'https://us.yonex.com/cdn/shop/files/ALL_08EZ100_839-2.jpg?v=1785871338&width=1946'
+  ),
+  (
+    'ASICS',
+    'GEL-RESOLUTION',
+    'https://cdn.tennisplaza.com/products/2025/06/20272_swvpwx.jpg?aspect_ratio=100%3A101&width=800'
   )
 ) as v(brand, name, image_url)
 where p.brand = v.brand
