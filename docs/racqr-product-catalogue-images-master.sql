@@ -41,6 +41,11 @@ from (values
   ),
   (
     'Wilson',
+    'Super Tour 9 Pack',
+    'https://www.wilson.com/cdn/shop/files/WR8036701_0_Super_Tour_9PK_Red_red_01.png?v=1792776293&width=1200'
+  ),
+  (
+    'Wilson',
     'Pro Overgrip',
     'https://justtennis.com/cdn/shop/files/WRZ470418_0_PRO_OVERGRIP_WH_WM.png.high-res_70x.jpg?v=1777911084'
   ),
