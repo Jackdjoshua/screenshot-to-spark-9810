@@ -408,6 +408,31 @@ from (values
     'Tourna',
     'Tourna Grip Original',
     'https://tennishub.com/cdn/shop/files/Tournagriporiginal3pack_2_1200x1200.jpg?v=1695891065'
+  )  ,
+  (
+    'Wilson',
+    'Pro Feel Dampener',
+    'https://www.wilson.com/cdn/shop/files/WRZ537600_1_Pro_Feel_Red_Silver.png'
+  ),
+  (
+    'Nike',
+    'Vapor',
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto%2Cq_auto%3Aeco%2Cu_9ddf04c7-2a9a-4d76-add1-d15af8f0263d%2Cc_scale%2Cfl_relative%2Cw_1.0%2Ch_1.0%2Cfl_layer_apply/35a84da7-df6a-4ffc-8c24-905b39cb3f73/M%2BZOOM%2BVAPOR%2B12%2BHC.png'
+  ),
+  (
+    'Wilson',
+    'Team Tennis Balls',
+    'https://www.tennisplaza.com/prodimages/alt_images/medium/WRT1019W-1.jpg'
+  ),
+  (
+    'Dunlop',
+    'Fort All Court Tennis Balls',
+    'https://www.sportsraquettes.fr/31918-large_default/balles-dunlop-fort-all-court-x4.jpg'
+  ),
+  (
+    'Penn',
+    'Championship Extra Duty Balls',
+    'https://topgearathletics.com/cdn/shop/files/shopping_3741a4cb-b6b9-411f-95bb-817f96daa98b_600x.jpg?v=1691505370'
   )
 ) as v(brand, name, image_url)
 where p.brand = v.brand
