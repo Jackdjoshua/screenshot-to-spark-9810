@@ -297,7 +297,7 @@ from (values
   (
     'Babolat',
     'Pure Drive 6 Pack',
-    'https://bgctennis.com/wp-content/uploads/2024/10/A-12-247x247.jpg'
+    'https://www.tennisnuts.com/images/product/main/751208-136_pure-drive-6rh-bag_A.jpg?98='
   ),
   (
     'Yonex',
