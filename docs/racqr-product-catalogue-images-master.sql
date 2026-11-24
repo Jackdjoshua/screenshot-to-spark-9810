@@ -283,6 +283,31 @@ from (values
     'Yonex',
     'Poly Tour Rev',
     'https://www.yonex.co.jp/tennis/news/assets_c/2020/11/2011061100_s-thumb-600x600-18739.jpg'
+  )  ,
+  (
+    'Wilson',
+    'Super Tour 15 Pack',
+    'https://www.wilson.com/cdn/shop/files/WR8036601_0_Super_Tour_15PK_Red_red_01.png?v=1792775521&width=1200'
+  ),
+  (
+    'HEAD',
+    'Pro X Racquet Bag L',
+    'https://cdn-mdb.head.com/CDN3/D/260015/4/683x911/pro-x-racquet-bag-l-bk.webp'
+  ),
+  (
+    'Babolat',
+    'Pure Drive 6 Pack',
+    'https://bgctennis.com/wp-content/uploads/2024/10/A-12-247x247.jpg'
+  ),
+  (
+    'Yonex',
+    'Team Racquet Bag 6R',
+    'https://us.yonex.com/cdn/shop/files/INT_BA42526_338-1.jpg?v=1770432678&width=1445'
+  ),
+  (
+    'Wilson',
+    'Pro Overgrip 3 Pack',
+    'https://www.wilson.com/cdn/shop/files/WRZ4014BK_1_Pro_Overgrip_Black_Handle_black_01.png?v=1792819908&width=1200'
   )
 ) as v(brand, name, image_url)
 where p.brand = v.brand
