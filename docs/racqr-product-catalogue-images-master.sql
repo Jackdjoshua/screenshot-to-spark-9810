@@ -333,6 +333,31 @@ from (values
     'Yonex',
     'Super Grap 3 Pack',
     'https://www.justtennis.com/cdn/shop/files/61K4p86TQzL.__AC_SX300_SY300_QL70_FMwebp.webp?v=1729803464'
+  )  ,
+  (
+    'HEAD',
+    'Boom Team',
+    'https://cdn-mdb.head.com/CDN3/D/232246/4/683x911/boom-team-2026.webp'
+  ),
+  (
+    'Babolat',
+    'Pure Drive 98',
+    'https://www.racquetworld.com.au/cdn/shop/files/BabolatPureDrive98MainImage.jpg?v=1736303541'
+  ),
+  (
+    'Tecnifibre',
+    'Ice Code',
+    'https://www.tecnifibre.com/cdn/shop/files/04GIC130XW_01.jpg?crop=center&height=1800&v=1747406910&width=1800'
+  ),
+  (
+    'Luxilon',
+    '4G',
+    'https://cdn.shoplightspeed.com/shops/633343/files/64263626/650x750x2/luxilon-4g.jpg'
+  ),
+  (
+    'Luxilon',
+    'Element',
+    'https://www.wilson.com/cdn/shop/files/WRZ990105_0_Element_125_Set_Bronze_bronze_01.png?v=1792776579&width=1200'
   )
 ) as v(brand, name, image_url)
 where p.brand = v.brand
