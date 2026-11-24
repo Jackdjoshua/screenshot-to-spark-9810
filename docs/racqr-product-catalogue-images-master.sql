@@ -12,22 +12,22 @@ from (values
   (
     'HEAD',
     'Speed MP',
-    'https://www.thatracket.com/_next/image?q=85&url=%2Fhead-speed-mp-2024.jpeg&w=1200'
+    'https://www.thatracket.com/_next/image?q=75&url=%2Fhead-speed-mp-2024.jpeg&w=384'
   ),
   (
     'HEAD',
     'Radical MP',
-    'https://www.thatracket.com/_next/image?q=85&url=%2Fhead-radical-2023.jpg&w=1200'
+    'https://www.thatracket.com/_next/image?q=75&url=%2Fhead-radical-2023.jpg&w=384'
   ),
   (
     'Wilson',
     'Blade 98 16x19',
-    'https://www.thatracket.com/_next/image?q=85&url=%2Fwilson-blade-98-16x19-2024.jpg&w=1200'
+    'https://www.thatracket.com/_next/image?q=75&url=%2Fwilson-blade-98-16x19-2024.jpg&w=384'
   ),
   (
     'Babolat',
     'Pure Drive',
-    'https://www.thatracket.com/_next/image?q=85&url=%2Fbabolat-pure-drive-2025.jpeg&w=1200'
+    'https://www.thatracket.com/_next/image?q=75&url=%2Fbabolat-pure-drive-2025.jpeg&w=384'
   ),
   (
     'Yonex',
