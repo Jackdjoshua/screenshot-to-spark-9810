@@ -52,7 +52,7 @@ from (values
   (
     'Wilson',
     'Pro Overgrip',
-    'https://justtennis.com/cdn/shop/files/WRZ470418_0_PRO_OVERGRIP_WH_WM.png.high-res_70x.jpg?v=1777911084'
+    'https://www.wilson.com/cdn/shop/files/WRZ4014WH_1_Pro_Over_Grips_white_white_02.png?v=1792776576&width=3840'
   ),
   (
     'Yonex',
