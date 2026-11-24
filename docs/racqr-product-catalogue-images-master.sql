@@ -85,6 +85,11 @@ from (values
     'https://justtennis.com/cdn/shop/products/lynx-tour-champagne.jpg?v=1678948436'
   ),
   (
+    'Wilson',
+    'Ultra 100L',
+    'https://atrsports.com/cdn/shop/files/WR178911U_0_ULTRA_100L_V5_FRM_ElectricBlue.png.high-res.jpg?v=1753479034&width=1080'
+  ),
+  (
     'Babolat',
     'Pure Drive Team',
     'https://pdhsports.com/cdn/shop/files/102554-PD_TEAM_GEN11_S-100-1-Face.png?v=1736855987&width=400'
