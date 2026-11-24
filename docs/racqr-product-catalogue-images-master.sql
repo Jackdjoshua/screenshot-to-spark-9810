@@ -57,7 +57,7 @@ from (values
   (
     'Yonex',
     'Super Grap',
-    'https://justtennis.com/cdn/shop/products/ac102_all_aa5b68d9-ab2a-46e5-9e66-59c598f0d8fb_70x.webp?v=1679778673'
+    'https://cdn.shoplightspeed.com/shops/636614/files/22354211/1600x2048x2/yonex-super-grap-overgrip.jpg'
   ),
   (
     'Wilson',
@@ -367,7 +367,7 @@ from (values
   (
     'adidas',
     'Solematch Control',
-    'https://www.tennispro.es/media/catalog/product/cache/7/thumbnail/1200x/9df78eab33525d08d6e5fb8d27136e95/i/f/if9110_blanc_1.jpg'
+    'https://assets.adidas.com/images/w_500%2Cf_auto%2Cq_auto/787b36ae070d4dd892ecf0034f31cc29_9366/Solematch_Control_2_Tennis_Shoes_White_IF9110_HM1.jpg'
   ),
   (
     'Wilson',
